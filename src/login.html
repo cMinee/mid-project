@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="./output.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/tw-elements@latest/dist/css/index.min.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="container justify-center align-middle mx-auto font-poppins flex flex-wrap my-4">
+            <div class="m-10 px-28 py-10 inline-block cursor-pointer rounded-lg bg-quaternary shadow-md transition-all hover:bg-tertiary">
+                <form>
+                    <div class="space-y-12">
+                        <div class="border-b border-gray-900/10 pb-12">
+                            <h2 class="font-semibold text-2xl text-gray-900">Login</h2>
+                            <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                                <div class="sm:col-span-4">
+                                    <label for="email" class="block text-sm/6 font-medium text-gray-900">Email</label>
+                                    <div class="mt-2">
+                                        <input id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                    </div>
+                                </div>
+
+                                <div class="sm:col-span-4">
+                                    <label for="password" class="block text-sm/6 font-medium text-gray-900">Password</label>
+                                    <div class="mt-2">
+                                        <input id="password" type="password" autocomplete="password" required class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-center gap-x-6">
+                            <button
+                                href="./index.html"
+                                id="login-submit"
+                                type="submit" 
+                                class="rounded-md bg-orange-400 px-8 py-2 text-sm font-semibold text-black shadow-md hover:text-primary-dark hover:bg-quaternary transition-all"
+                            >
+                                Login
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/tw-elements@latest/dist/js/index.min.js"></script>
+        <script src="./js/login.js"></script>
+    </body>
+</html>

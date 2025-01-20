@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Checkout</title>
+    <link href="./output.css" rel="stylesheet">
+  </head>
+  <body>
+    <h1 class="text-2xl font-semibold text-center my-5">Checkout</h1>
+    <div class="container mx-auto px-20">
+      <div id="order-summary" class="bg-white shadow-md rounded-md p-5">
+        <h2 class="text-xl font-semibold mb-4">Order Summary</h2>
+        <div id="order-details"></div>
+        <div id="order-total"
+          class="text-right text-xl font-semibold mt-5">Total: 0 ฿
+        </div>
+        <hr class="my-8">
+        <!-- Input address to delivery -->
+        <div class="mt-5">
+          <h3 class="text-lg font-semibold mb-3">Shipping information</h3>
+          <form id="address-form">
+            <!-- firstname and lastname in same line -->
+            <div class="flex">
+              <div class="mb-2 mr-2">
+                <label for="first-name">First Name:</label>
+                <input type="text" id="first-name" name="first-name"
+                  class="w-full border rounded-md px-4 py-2" required>
+              </div>
+              <div class="mb-2">
+                <label for="last-name">Last Name:</label> 
+                <input type="text" id="last-name" name="last-name"  
+                  class="w-full border rounded-md px-4 py-2" required>
+              </div>
+            </div>
+            <div class="mb-2">
+              <label for="address">Address:</label>
+              <input type="text" id="address" name="address"
+                class="w-full border rounded-md px-4 py-2" required
+                placeholder="บ้านเลขที่ หมู่ที่ ถนน ตําบล"
+              >
+            </div>
+            <div class="flex">
+              <div class="mb-2 mr-2">
+                <label for="city">District:</label>
+                <input type="text" id="city" name="city"
+                  class="w-full border rounded-md px-4 py-2" required
+                  placeholder="ตําบล"
+                >
+              </div>
+              <div class="mb-2 mr-2">
+                <label for="province">Province:</label> 
+                <input type="text" id="province" name="province"  
+                  class="w-full border rounded-md px-4 py-2" required
+                  placeholder="จังหวัด"
+                >
+              </div>
+              <div class="mb-2">
+                <label for="zipcode">Zipcode:</label> 
+                <input type="number" id="zipcode" name="zipcode"  
+                  class="w-full border rounded-md px-4 py-2" required
+                  placeholder="รหัสไปรษณีย์"
+                >
+              </div>
+            </div>
+            <div class="flex">
+              <div class="mb-2 mr-2">
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="phone" id="phoneNumber" name="phoneNumber"
+                  class="w-full border rounded-md px-4 py-2" required>
+              </div>
+              <div class="mb-2">
+                <label for="email">Email:</label> 
+                <input type="email" id="email" name="email"  
+                  class="w-full border rounded-md px-4 py-2" required>
+              </div>
+            </div>
+          </form>
+        </div>
+        <hr class="my-8">
+        <div class="mt-5">
+          <h3 class="text-lg font-semibold mb-3">Select Payment Method</h3>
+          <form id="payment-form">
+            <div class="mb-2">
+              <label>
+                <input type="radio" name="payment-method" value="Prompt Pay">
+                Prompt pay
+              </label>
+            </div>
+            <div class="mb-2">
+              <label>
+                <input type="radio" name="payment-method"
+                  value="Credit Card">
+                Credit Card
+              </label>
+            </div>
+            <div class="mb-2">
+              <label>
+                <input type="radio" name="payment-method"
+                  value="Cash on Delivery">
+                Cash on Delivery
+              </label>
+            </div>
+          </form>
+        </div>
+
+        <!-- promtpay QR -->
+        <div id="promtpay-qr" class="hidden mt-5 bg-gray-100 p-4 rounded-md text-center">
+          <h3 class="text-xl font-semibold mb-3">Promtpay QR</h3>
+          <div class="flex justify-center">
+            <img src="./assets/QR.jpg" alt="Promtpay QR" class="w-80">
+          </div>
+        </div>
+
+        <!-- ฟอร์มสำหรับกรอกข้อมูลบัตรเครดิต -->
+        <div id="credit-card-form" class="hidden mt-5 bg-gray-100 p-4 rounded-md">
+          <h4 class="text-md font-semibold mb-3">Credit Card Information</h4>
+          <div class="mb-2">
+            <label for="card-number">Card Number:</label>
+            <input 
+              type="number" 
+              id="card-number" 
+              name="card-number"
+              placeholder="1234 5678 9012 3456"
+              maxlength="16"
+              class="w-full border rounded-md px-4 py-2" 
+              required
+            >
+          </div>
+          <div class="mb-2">
+            <label for="card-name">Card Name:</label>
+            <input 
+              type="text" 
+              id="card-name" 
+              name="card-name"
+              maxlength="16"
+              class="w-full border rounded-md px-4 py-2" 
+              required
+            >
+          </div>
+          <div class="mb-2">
+            <label for="expiry-date">Expiry Date:</label>
+            <input 
+              type="text" 
+              id="expiry-date" 
+              name="expiry-date" 
+              placeholder="MM/YY"
+              maxlength="5"
+              class="w-full border rounded-md px-4 py-2" 
+              required
+            >
+          </div>
+          <div class="mb-2">
+            <label for="cvv">CVV:</label>
+            <input 
+              type="number" 
+              maxlength="3" 
+              id="cvv" 
+              name="cvv" 
+              placeholder="123"
+              class="w-full border rounded-md px-4 py-2" 
+              required
+            >
+          </div>
+        </div>
+      </div>
+      <div class="text-right mt-5">
+        <button id="confirm-order"
+          class="bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-600">
+          Confirm Order
+        </button>
+      </div>
+    </div>
+
+    <script>
+
+      // ตรวจสอบความถูกต้องของวันหมดอายุ
+      function isValidExpiryDate(date) {
+        const [month, year] = date.split("/");
+        const now = new Date();
+        const currentYear = parseInt(now.getFullYear().toString().slice(2), 10); // สองหลักท้ายของปีปัจจุบัน
+        const expiry = new Date(`20${year}`, month - 1); // ปีเป็นแบบ 4 หลัก
+        return (
+          /^\d{2}\/\d{2}$/.test(date) && // ตรวจสอบรูปแบบ MM/YY
+          month >= 1 &&
+          month <= 12 &&
+          (year > currentYear || (year === currentYear && expiry >= now))
+        );
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const order = JSON.parse(sessionStorage.getItem("currentOrder"));
+    
+        if (!order) {
+          document.getElementById("order-summary").innerHTML = "<p class='text-center'>No items found.</p>";
+          return;
+        }
+    
+        const orderDetails = document.getElementById("order-details");
+        orderDetails.innerHTML = `
+          <div class="flex justify-between items-center mb-4">
+            <div>
+              <h3 class="text-lg font-medium">${order.name}</h3>
+              <p class="text-sm text-gray-500">Price: ${order.price} ฿</p>
+              <p class="text-sm text-gray-500">Quantity: ${order.quantity}</p>
+            </div>
+            <div class="text-right">${order.total} ฿</div>
+          </div>
+        `;
+    
+        const orderTotal = document.getElementById("order-total");
+        orderTotal.textContent = `Total: ${order.total} ฿`;
+    
+        // แสดง/ซ่อนฟอร์มบัตรเครดิตตามวิธีการชำระเงิน
+        const paymentForm = document.getElementById("payment-form");
+        const creditCardForm = document.getElementById("credit-card-form");
+        const promptPayForm = document.getElementById("promtpay-qr");
+    
+        paymentForm.addEventListener("change", (event) => {
+          const paymentMethod = event.target.value;
+    
+          if (paymentMethod === "Credit Card") {
+            creditCardForm.classList.remove("hidden"); // แสดงฟอร์มบัตรเครดิต
+          } else {
+            creditCardForm.classList.add("hidden"); // ซ่อนฟอร์มบัตรเครดิต
+          }
+        });
+
+        // แสดง/ซ่อนฟอร์ม PP ตามวิธีการชำระเงิน
+        paymentForm.addEventListener("change", (event) => {
+          const paymentMethod = event.target.value;
+    
+          if (paymentMethod === "Prompt Pay") {
+            promptPayForm.classList.remove("hidden"); // แสดงฟอร์มบัตรเครดิต
+          } else {
+            promptPayForm.classList.add("hidden"); // ซ่อนฟอร์มบัตรเครดิต
+          }
+        });
+    
+        // ยืนยันคำสั่งซื้อ
+        document.getElementById("confirm-order").addEventListener("click", () => {
+          const selectedPaymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
+    
+          if (selectedPaymentMethod === "Credit Card") {
+            const cardNumber = document.getElementById("card-number").value.trim();
+            const cardName = document.getElementById("card-name").value.trim();
+            const expiryDate = document.getElementById("expiry-date").value.trim();
+            const cvv = document.getElementById("cvv").value.trim();
+    
+            if (!cardNumber || !cardName || !expiryDate || !cvv) {
+              alert("Please fill in your credit card details.");
+              return;
+            }
+
+            document.getElementById("card-number").addEventListener("input", (event) => {
+              const input = event.target;
+              const value = input.value.replace(/\s+/g, ""); // ลบช่องว่างทั้งหมด
+              const formattedValue = value.match(/.{1,4}/g)?.join(" ") || ""; // เพิ่มช่องว่างทุก 4 ตัว
+              input.value = formattedValue; // ตั้งค่าข้อความที่ฟอร์แมตแล้ว
+
+              // ตรวจสอบความยาวไม่ให้เกิน 16 ตัวเลข (ไม่รวมช่องว่าง)
+              if (value.length > 16) {
+                input.value = formattedValue.slice(0, 19); // จำกัดความยาวรวมช่องว่าง
+              }
+            });
+
+            if (!isValidExpiryDate(expiryDate)) {
+              alert("Invalid expiry date. Please check and try again.");
+              return;
+            }
+
+            if (cvv.length !== 3 || isNaN(cvv)) {
+              alert("Invalid CVV. Please enter a 3-digit security code.");
+              return;
+            }
+          }
+    
+          alert(`
+            Order confirmed!
+            Payment Method: ${selectedPaymentMethod}
+            Thank you for your purchase.
+          `);
+    
+          sessionStorage.removeItem("currentOrder"); // ลบข้อมูลหลังคำสั่งซื้อเสร็จสิ้น
+          window.location.href = "./index.html"; // กลับไปหน้าหลัก
+        });
+      });
+    </script>
+    
+  </body>
+</html>

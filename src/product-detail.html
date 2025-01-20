@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Details</title>
+  <link href="./output.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/tw-elements@latest/dist/css/index.min.css" rel="stylesheet" />
+</head>
+<body>
+  <nav class="w-full bg-white font-poppins shadow-md">
+    <div class="container mx-auto flex items-center justify-between px-6 py-4">
+        <!-- Logo and Left Navigation -->
+        <div class="flex items-center space-x-6">
+            <!-- Logo -->
+            <a href="index.html" class="text-2xl font-bold text-gray-800">BrandLogo</a>
+            <!-- Products Dropdown -->
+            <div class="relative">
+                <button
+                    class="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100"
+                    id="products-menu">
+                    สินค้าทั้งหมด
+                    <svg class="h-4 w-4 text-gray-600"
+                        xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div id="products-dropdown"
+                  class="hidden absolute left-0 z-20 mt-2 w-48 rounded-md bg-white shadow-md">
+                  <a href="./products.html"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">สินค้าทั้งหมด</a>
+                  <a href="./products.html?type=headphone"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">หูฟัง</a>
+                  <a href="./products.html?type=computer"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">คอมพิวเตอร์</a>
+                  <a href="./products.html?type=keyboard"
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">คีย์บอร์ด</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="flex-1 max-w-lg">
+            <input type="text" id="search-input"
+                class="w-full rounded-md border border-gray-300 px-4 py-2 text-sm focus:border-primary-light focus:ring focus:ring-primary-light"
+                placeholder="ค้นหาสินค้า...">
+            <div id="search-results" class="absolute bg-white shadow-md rounded-md w-full mt-2 hidden"
+              style="z-index: 1;"
+            >
+              <!-- ผลการค้นหาจะแสดงที่นี่ -->
+            </div>
+        </div>
+
+        <!-- Right Navigation -->
+        <div class="flex items-center space-x-6">
+            <!-- Icons -->
+            <a href="./cart.html" class="relative text-gray-800 hover:text-primary-light">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
+                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                </svg>
+                <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs w-4 h-4 flex items-center justify-center">0</span>
+            </a>
+            <!-- Profile Dropdown -->
+            <div class="relative">
+                <div id="logined-profile" class="hidden">
+                  <button
+                    class="flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100"
+                    id="profile-menu">
+                    Profile
+                    <svg class="h-4 w-4 text-gray-600"
+                        xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  <div id="profile-dropdown" class="hidden absolute right-0 z-20 mt-2 w-48 rounded-md bg-white shadow-md">
+                      <!-- My Account Option -->
+                      <a href="/my-account"
+                          class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 rounded-md">
+                          My account
+                      </a>
+                      <!-- Log Out Option -->
+                      <!-- <form method="POST" action="#">
+                          <button type="submit" id="logout"
+                              class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 rounded-md">
+                              Log out
+                          </button>
+                      </form> -->
+                      <button type="submit" id="logout"
+                        class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 rounded-md">
+                          Log out
+                      </button>
+                  </div>
+                </div>
+                <div id="login-profile">
+                  <a
+                    href="./login.html"
+                    class="flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100"
+                    id="profile-menu">
+                    Login
+                  </a>
+                </div>
+            </div>
+        </div>
+    </div>
+  </nav>
+
+  <div class="container mx-auto my-4">
+    <div class="grid grid-cols-4 gap-4 mx-20 my-10">
+      <div class="col-span-2">
+        <!-- show product image -->
+        <div id="product-image"></div>
+      </div>
+      <div class="col-span-2 p-5">
+        <!-- show product detail -->
+        <div id="product-detail"></div>
+        <div class="bg-quaternary rounded-xl my-5 py-6 px-5">
+          <div class="flex">
+            <p>Quantity: </p>
+            <input id="quantity" type="number" name="quantity" value="1" min="1" class="rounded-md mx-4 shadow-sm">
+          </div>
+          <div class="flex my-5 gap-5">
+            <a
+              href="#"
+              class="add-cart-button w-44 text-center rounded-md bg-primary px-6 py-2 text-white transition hover:bg-primary-light flex justify-center items-center"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 mr-2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+              </svg>
+              Add Cart
+            </a>
+            <a class="buy-now-button w-44 text-center rounded-md bg-primary px-6 py-2 text-white transition hover:bg-primary-light">Buy Now</a>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/tw-elements@latest/dist/js/index.min.js"></script>
+  <script src="./js/detail.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>

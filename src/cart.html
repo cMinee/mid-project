@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cart</title>
+  <link href="./output.css" rel="stylesheet">
+</head>
+<body>
+  <h1 class="text-2xl font-semibold text-center my-5">Shopping Cart</h1>
+  <div class="container mx-auto px-20">
+    <div id="cart-items" class="grid grid-cols-1 gap-4"></div>
+    <div id="cart-total" class="text-right text-xl font-semibold mt-5">Total: 0 ฿</div>
+
+    <div class="text-right mt-5">
+      <button id="checkout-button" class="bg-green-500 text-white px-6 py-2 rounded-md hover:bg-green-600">
+        Checkout
+      </button>
+    </div>
+    <div id="checkout-summary" class="mt-5 hidden">
+      <h2 class="text-xl font-semibold">Order Summary</h2>
+      <pre id="summary-content" class="bg-gray-100 p-4 rounded-md mt-2"></pre>
+    </div>
+  </div>
+
+  <script>
+    function loadCart() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const cartItems = document.getElementById("cart-items");
+      const cartTotal = document.getElementById("cart-total");
+  
+      cartItems.innerHTML = ""; // ล้างรายการเก่า
+      let total = 0;
+  
+      cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+  
+        const itemDiv = document.createElement("div");
+        itemDiv.className = "flex justify-between items-center p-4 border-b";
+        itemDiv.innerHTML = `
+          <div class="flex items-center gap-4">
+            <img src="${item.src}" alt="${item.name}" class="w-16 h-16 rounded-md">
+            <div>
+              <div class="font-semibold">${item.name}</div>
+              <div class="text-sm text-gray-500">Price: ${item.price} ฿</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <input type="number" min="1" value="${item.quantity}" class="quantity-input w-16 text-center border rounded-md"
+                   data-index="${index}">
+            <button class="remove-item bg-red-500 text-white px-4 py-2 rounded-md" data-index="${index}">
+              Remove
+            </button>
+          </div>
+        `;
+        cartItems.appendChild(itemDiv);
+      });
+  
+      cartTotal.textContent = `Total: ${total} ฿`;
+    }
+  
+    function handleCheckout() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      if (cart.length === 0) {
+        alert("Your cart is empty.");
+        return;
+      }
+  
+      const summaryDiv = document.getElementById("checkout-summary");
+      const summaryContent = document.getElementById("summary-content");
+  
+      // สร้างข้อความสรุปคำสั่งซื้อ
+      const summary = cart.map(item => {
+        return `${item.name} (x${item.quantity}) - ${item.price * item.quantity} ฿`;
+      }).join("\n");
+  
+      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  
+      summaryContent.textContent = `Items:\n${summary}\n\nTotal: ${total} ฿`;
+      summaryDiv.classList.remove("hidden");
+    }
+  
+    document.addEventListener("DOMContentLoaded", () => {
+      loadCart();
+  
+      document.getElementById("checkout-button").addEventListener("click", handleCheckout);
+  
+      document.getElementById("cart-items").addEventListener("input", (event) => {
+        if (event.target.classList.contains("quantity-input")) {
+          const index = event.target.getAttribute("data-index");
+          const newQuantity = event.target.value;
+          if (newQuantity > 0) {
+            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart[index].quantity = parseInt(newQuantity, 10);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            loadCart(); // โหลดตะกร้าใหม่
+          }
+        }
+      });
+  
+      document.getElementById("cart-items").addEventListener("click", (event) => {
+        if (event.target.classList.contains("remove-item")) {
+          const index = event.target.getAttribute("data-index");
+          const cart = JSON.parse(localStorage.getItem("cart")) || [];
+          cart.splice(index, 1); // ลบสินค้าออกจาก array
+          localStorage.setItem("cart", JSON.stringify(cart));
+          loadCart(); // โหลดตะกร้าใหม่
+        }
+      });
+    });
+  </script>
+  
+
+</body>
+</html>
