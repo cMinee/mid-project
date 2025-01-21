@@ -4,31 +4,36 @@
     <meta charset="UTF-8">
     <title>Checkout</title>
     <link href="./output.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/tw-elements@latest/dist/css/index.min.css"
+      rel="stylesheet" />
   </head>
   <body>
     <h1 class="text-2xl font-semibold text-center my-5">Checkout</h1>
     <div class="container mx-auto px-20">
-      <div id="order-summary" class="bg-white shadow-md rounded-md p-5">
-        <h2 class="text-xl font-semibold mb-4">Order Summary</h2>
-        <div id="order-details"></div>
-        <div id="order-total"
-          class="text-right text-xl font-semibold mt-5">Total: 0 ฿
+      <div id="order-summary" class="bg-gray-100 shadow-md rounded-md p-5">
+        <div>
+          <h2 class="text-xl font-semibold mb-4">Order Summary</h2>
+          <div id="order-details"></div>
+          <div id="order-total"
+            class="text-right text-xl font-semibold mt-5">Total: 0 ฿
+          </div>
         </div>
-        <hr class="my-8">
+      </div>
+      <div class="bg-white shadow-md rounded-md p-5 mt-5">
         <!-- Input address to delivery -->
         <div class="mt-5">
           <h3 class="text-lg font-semibold mb-3">Shipping information</h3>
           <form id="address-form">
-            <!-- firstname and lastname in same line -->
             <div class="flex">
               <div class="mb-2 mr-2">
-                <label for="first-name">First Name:</label>
-                <input type="text" id="first-name" name="first-name"
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName"
                   class="w-full border rounded-md px-4 py-2" required>
               </div>
               <div class="mb-2">
-                <label for="last-name">Last Name:</label> 
-                <input type="text" id="last-name" name="last-name"  
+                <label for="lastName">Last Name:</label> 
+                <input type="text" id="lastName" name="lastName"  
                   class="w-full border rounded-md px-4 py-2" required>
               </div>
             </div>
@@ -76,7 +81,10 @@
             </div>
           </form>
         </div>
+
         <hr class="my-8">
+
+        <!-- Payment -->
         <div class="mt-5">
           <h3 class="text-lg font-semibold mb-3">Select Payment Method</h3>
           <form id="payment-form">
@@ -171,6 +179,7 @@
       </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements@latest/dist/js/index.min.js"></script>
     <script>
 
       // ตรวจสอบความถูกต้องของวันหมดอายุ
@@ -273,6 +282,11 @@
               return;
             }
           }
+
+          console.log(`
+          Order confirmed! 
+          Payment Method:", ${selectedPaymentMethod}
+          `);
     
           alert(`
             Order confirmed!
@@ -284,6 +298,44 @@
           window.location.href = "./index.html"; // กลับไปหน้าหลัก
         });
       });
+
+      document.addEventListener("DOMContentLoaded", () => {
+  const confirmOrderBtn = document.getElementById("confirm-order");
+
+  confirmOrderBtn.addEventListener("click", () => {
+    // ดึงข้อมูลที่อยู่จากฟอร์ม
+    const addressData = {
+      firstName: document.getElementById("firstName").value.trim(),
+      lastName: document.getElementById("lastName").value.trim(),
+      address: document.getElementById("address").value.trim(),
+      city: document.getElementById("city").value.trim(),
+      province: document.getElementById("province").value.trim(),
+      zipcode: document.getElementById("zipcode").value.trim(),
+      phoneNumber: document.getElementById("phoneNumber").value.trim(),
+      email: document.getElementById("email").value.trim(),
+    };
+
+    // ตรวจสอบข้อมูลที่อยู่ว่ากรอกครบถ้วนหรือไม่
+    for (const key in addressData) {
+      if (!addressData[key]) {
+        alert(`กรุณากรอกข้อมูล: ${key}`);
+        return;
+      }
+    }
+
+    // บันทึกข้อมูลลงใน Local Storage
+    localStorage.setItem("customerAddress", JSON.stringify(addressData));
+
+    // แสดงผลข้อมูลทาง console
+    console.log("บันทึกข้อมูลที่อยู่สำเร็จ:", addressData);
+
+    alert("Your order has been successfully!");
+
+    // ย้ายไปยังหน้าสั่งซื้อเสร็จสมบูรณ์ หรือหน้าขอบคุณ
+    window.location.href = "./index.html";
+  });
+});
+
     </script>
     
   </body>

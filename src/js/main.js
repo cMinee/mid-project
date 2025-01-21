@@ -2,49 +2,105 @@
 
 document.addEventListener("DOMContentLoaded", async () => {
   const productList = document.getElementById("product-list");
+  const minPriceInput = document.getElementById("min-price");
+  const maxPriceInput = document.getElementById("max-price");
+  const filterBtn = document.getElementById("filter-price-btn");
+  const clearFilterBtn = document.getElementById("clear-filter-btn");
 
+  // ดึงประเภทสินค้าจาก URL (ถ้ามี)
   const params = new URLSearchParams(window.location.search);
   const selectedType = params.get("type");
 
-  // ดึงข้อมูลจากไฟล์ JSON
+  // อ้างอิง element ที่ใช้แสดงรูปภาพ
+  const categoryImageDiv = document.getElementById("category-image");
+  // แมปประเภทสินค้ากับรูปภาพที่เกี่ยวข้อง
+  const categoryImages = {
+    headphone: "/src/assets/headPage-headphone.png",
+    computer: "/src/assets/headPage-notebook.png",
+    keyboard: "/src/assets/headPage-keyboard.png"
+  };
+
+  // ตรวจสอบว่ามีประเภทสินค้าและแสดงภาพที่เหมาะสม
+  if (selectedType && categoryImages[selectedType]) {
+    categoryImageDiv.innerHTML = `
+      <img 
+        src="${categoryImages[selectedType]}" 
+        alt="${selectedType}" 
+        class="w-full rounded-md shadow-lg"
+      />
+    `;
+  } else {
+    categoryImageDiv.innerHTML = ``;
+  }
+
   try {
     const response = await fetch("./data/mock-products.json");
-    const products = await response.json();
+    let products = await response.json();
 
-    // กรองสินค้าตามประเภทที่เลือก
-    const filteredProducts = selectedType 
+    // ฟังก์ชันแสดงสินค้า
+    function displayProducts(filteredProducts) {
+      productList.innerHTML = ""; // ล้างรายการก่อนหน้า
+
+      filteredProducts.forEach((product) => {
+        const productDiv = document.createElement("a");
+        productDiv.classList.add("group", "cursor-pointer", "block", "w-full", "max-w-xs", "mx-auto");
+
+        let saleTag = "";
+        let priceClass = "text-gray-900";
+
+        if (product.sale) {
+          saleTag = `<span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+                       ${product.sale}% OFF
+                     </span>`;
+          priceClass = "text-red-500";
+        }
+
+        productDiv.innerHTML = `
+          <div class="relative p-3 rounded-md shadow-md hover:shadow-xl bg-white" onclick="viewProduct(${product.id})">
+            ${saleTag}
+            <img src="${product.src}" alt="Product Img" class="aspect-square w-full rounded-lg bg-gray-200 object-cover xl:aspect-[7/8]"/>
+            <h3 class="mt-4 text-sm text-gray-700 font-semibold text-left">${product.name}</h3>
+            <p class="my-1 text-lg font-medium ${priceClass} text-left">Price: ${product.price} ฿</p>
+          </div>
+        `;
+
+        productList.appendChild(productDiv);
+      });
+    }
+
+    // ฟังก์ชันกรองสินค้าตามประเภทที่เลือก
+    let filteredProducts = selectedType 
       ? products.filter(product => product.type === selectedType) 
       : products;
 
-      filteredProducts.forEach((product) => {
-      const productDiv = document.createElement("a");
-      productDiv.classList.add("group", "cursor-pointer", "block", "w-full", "max-w-xs", "mx-auto");
-      
-      let saleTag = "";
-      if (product.sale) {
-        saleTag = `<span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
-                     ${product.sale}% OFF
-                   </span>`;
-      }
-      productDiv.innerHTML = `
-        <div class="relative p-3 rounded-md shadow-md hover:shadow-xl bg-white" onclick="viewProduct(${product.id})">
-          ${saleTag}
-          <img src="${product.src}" alt="Product Img" class="aspect-square w-full rounded-lg bg-gray-200 object-cover xl:aspect-[7/8]"/>
-          <h3 class="mt-4 text-sm text-gray-700 font-semibold text-left">${product.name}</h3>
-          <p class="my-1 text-lg font-medium text-left text-secondary-dark">Price: ${product.price} ฿</p>
-        </div>
-      `;
-      // <div class="text-left mt-2">
-      //   <a class="inline-block rounded-md bg-primary-dark px-4 py-2 text-white transition hover:bg-primary-light" onclick="viewProduct(${product.id})">
-      //     View Details
-      //   </a>
-      // </div>
-      productList.appendChild(productDiv);
+    displayProducts(filteredProducts);
+
+    // ฟังก์ชันกรองสินค้าตามช่วงราคา
+    filterBtn.addEventListener("click", () => {
+      const minPrice = parseInt(minPriceInput.value) || 0;
+      const maxPrice = parseInt(maxPriceInput.value) || Infinity;
+
+      const filteredByPrice = filteredProducts.filter(product => 
+        product.price >= minPrice && product.price <= maxPrice
+      );
+
+      displayProducts(filteredByPrice);
     });
+
+    // ฟังก์ชันเคลียร์ตัวกรอง
+    clearFilterBtn.addEventListener("click", () => {
+      minPriceInput.value = "";
+      maxPriceInput.value = "";
+
+      // โหลดสินค้าตามประเภทใหม่
+      displayProducts(filteredProducts);
+    });
+
   } catch (error) {
     console.error("Error loading products:", error);
   }
 });
+
 
 
 // function to open product details
