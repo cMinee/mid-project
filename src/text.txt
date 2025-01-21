@@ -1,0 +1,32 @@
+function handleCheckout() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      if (cart.length === 0) {
+        alert("Your cart is empty.");
+        return;
+      }
+      
+      // สร้างข้อความสรุปคำสั่งซื้อ
+      // const summaryDiv = document.getElementById("checkout-summary");
+      // const summaryContent = document.getElementById("summary-content");
+  
+      // const summary = cart.map(item => {
+      //   return `${item.name} (x${item.quantity}) - ${item.price * item.quantity} ฿`;
+      // }).join("\n");
+  
+      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  
+      // summaryContent.textContent = `Items:\n${summary}\n\nTotal: ${total} ฿`;
+      // summaryDiv.classList.remove("hidden");
+
+      // บันทึกข้อมูลสินค้าและยอดรวมลงใน sessionStorage
+      sessionStorage.setItem("checkoutCart", JSON.stringify(cart));
+      sessionStorage.setItem("checkoutTotal", total);
+
+      console.log("Checkout data saved in sessionStorage:", sessionStorage.getItem("checkoutCart"));
+      
+      // ไปยังหน้าสรุปคำสั่งซื้อ
+      window.location.href = "./checkOut.html";
+
+      alert("Your order has been placed.");
+    }
