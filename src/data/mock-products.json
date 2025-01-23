@@ -6,7 +6,7 @@
     "price": 5990,
     "color": "Black",
     "type": "headphone",
-    "src": "https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2024/05/Product/marshall-major-v-wireless-on-ear-headphone-side-view.jpg",
+    "src": "https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2024/05/Product/marshall-major-v-wireless-on-ear-headphone-front-left-view.jpg",
     "src2": "https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2024/05/Product/marshall-major-v-wireless-on-ear-headphone-side-view.jpg",
     "src3": "https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2024/05/Product/marshall-major-v-wireless-on-ear-headphone-in-the-hand.jpg",
     "link": "https://www.mercular.com/marshall-major-v-wireless-on-ear-headphone"
@@ -160,7 +160,7 @@
   },
   {
     "id": 14,
-    "name": "โน๊ตบุ๊ค Dell XPS 14 Notebook Graphite",
+    "name": "โน๊ตบุ๊ค Dell XPS 14 Notebook 9440 Notebook Graphite",
     "description": "Dell XPS 14 9440 CXN9440CTO01GTH Notebook Graphite หน้าจอ OLED 3.2K สมจริงทุกจุด Core Ultra 7 + RTX 4050, RAM 64GB, Storage Size 2TB, CPU Model Intel Core Ultra 7 155H",
     "price": 119990,
     "color": "Silver-Gray",
@@ -172,7 +172,7 @@
   },
   {
     "id": 15,
-    "name": "โน๊ตบุ๊ค Asus Vivobook S 14 Flip",
+    "name": "โน๊ตบุ๊ค Asus Vivobook S 14 Flip TP3402VA-LZ503WF Notebook",
     "description": "Asus Vivobook S 14 Flip TP3402VA-LZ503WF Notebook หน้าจอ 14นิ้ว Ram Type DDR4, Ram Size 16GB, Storage Size 512GB, GPU Model Intel UHD Graphics, CPU Model Intel Core i5-13500H",
     "price": 28990,
     "color": "Black",
@@ -221,19 +221,19 @@
   },
   {
     "id": 19,
-    "name": "คีย์บอร์ด Nubwo X801 ELEANOR Mechanical Gaming Keyboard (EN/TH)",
-    "description": "Nubwo X801 ELEANOR Mechanical Gaming Keyboard (EN/TH) White/Blue + Blue Switch + Design C, Keyboard Size 97%, Special Feature: Multimedia Contoller, Anti-Ghosting, Interface: Wired",
+    "name": "คีย์บอร์ด MOFii Brownie Wireless Keyboard (EN/TH)",
+    "description": "คีย์บอร์ด MOFii Brownie Wireless Keyboard (EN/TH) Pink Lemon สีสันสดใส น่ารัก เหมาะกับเอาไปใช้ทำงานอวดเพื่อนเก๋ๆ ไร้สาย ขนาด 60% การเชื่อมต่อผ่านบลูทูธ รองรับทั้ง PC MAC และ Mobile น้ำหนักเพียง 400 g.",
     "price": 749,
-    "color": "White-Blue",
+    "color": "Pink Lemon",
     "type": "keyboard",
-    "src": "https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2024/03/nubwo-x801-eleanor-mechanical-gaming-keyboard-white-blue.jpg",
-    "src2": "https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2024/03/nubwo-x801-eleanor-mechanical-gaming-keyboard-set-c-d.jpg",
-    "src3": "https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2024/03/nubwo-x801-eleanor-mechanical-gaming-keyboard-white-blue.jpg",
-    "link": "https://www.mercular.com/nubwo-x801-eleanor-mechanical-gaming-keyboard?sku=1587343000005#product-spec"
+    "src": "https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2024/03/Product/mofii-brownie-wireless-keyboard-pink-lemon-top-view.jpg",
+    "src2": "https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2024/03/Product/mofii-brownie-wireless-keyboard-pink-lemon-front-right-view.jpg",
+    "src3": "https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2024/03/Product/mofii-brownie-wireless-keyboard-pink-lemon-upper-front-left-view.jpg",
+    "link": "https://www.mercular.com/mofii-brownie-wireless-keyboard"
   },
   {
     "id": 20,
-    "name": "คีย์บอร์ด Ajazz AK992 Mechanical Keyboard (EN/TH) Retro + Red Switch",
+    "name": "Ajazz AK992 Mechanical Keyboard (EN/TH) Retro + Red Switch",
     "description": "Mechanical Keyboard (EN/TH) Retro + Red Switch, คีย์บอร์ดขนาด 98% พร้อมปุ่มตัวเลข มาพร้อมกับ Knob เพิ่ม/ลดเสียง รองรับการ HOT-SWAPPABLE เชื่อมต่อได้ผ่านสาย USB-C",
     "price": 1090,
     "color": "Retro",

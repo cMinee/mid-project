@@ -75,6 +75,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     displayProducts(filteredProducts);
 
+    // กรองสินค้าเฉพาะที่ sale เป็น true
+    filterBtn.addEventListener("click", () => {
+      const filteredProducts = products.filter(product => product.sale);
+      displayProducts(filteredProducts);
+    });
+
     // ฟังก์ชันกรองสินค้าตามช่วงราคา
     filterBtn.addEventListener("click", () => {
       const minPrice = parseInt(minPriceInput.value) || 0;

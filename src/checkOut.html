@@ -9,14 +9,117 @@
       rel="stylesheet" />
   </head>
   <body>
-    <h1 class="text-2xl font-semibold text-center my-5">Checkout</h1>
+    <nav class="w-full bg-white font-poppins shadow-md">
+      <div class="container mx-auto flex items-center justify-between px-6 py-4">
+          <!-- Logo and Left Navigation -->
+          <div class="flex items-center space-x-6">
+              <!-- Logo -->
+              <a href="index.html" class="text-2xl font-bold text-gray-800">BrandLogo</a>
+              <!-- Products Dropdown -->
+              <div class="relative">
+                  <button
+                      class="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100"
+                      id="products-menu">
+                      สินค้าทั้งหมด
+                      <svg class="h-4 w-4 text-gray-600"
+                          xmlns="http://www.w3.org/2000/svg" fill="none"
+                          viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round"
+                              stroke-width="2" d="M19 9l-7 7-7-7" />
+                      </svg>
+                  </button>
+                  <div id="products-dropdown"
+                    class="hidden absolute left-0 z-20 mt-2 w-48 rounded-md bg-white shadow-md">
+                    <a href="./products.html"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">สินค้าทั้งหมด</a>
+                    <a href="./products.html?type=headphone"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">หูฟัง</a>
+                    <a href="./products.html?type=computer"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">คอมพิวเตอร์</a>
+                    <a href="./products.html?type=keyboard"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">คีย์บอร์ด</a>
+                  </div>
+              </div>
+          </div>
+  
+          <!-- Search Bar -->
+          <div class="flex-1 max-w-lg">
+              <input type="text" id="search-input"
+                  class="w-full rounded-md border border-gray-300 px-4 py-2 text-sm focus:border-primary-light focus:ring focus:ring-primary-light"
+                  placeholder="ค้นหาสินค้า...">
+              <div id="search-results" class="absolute bg-white shadow-md rounded-md w-full mt-2 hidden"
+                style="z-index: 1;"
+              >
+                <!-- ผลการค้นหาจะแสดงที่นี่ -->
+              </div>
+          </div>
+  
+          <!-- Right Navigation -->
+          <div class="flex items-center space-x-6">
+              <!-- Icons -->
+              <a href="./cart.html" class="relative text-gray-800 hover:text-primary-light">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
+                      fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                  </svg>
+                  <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs w-4 h-4 flex items-center justify-center">0</span>
+              </a>
+              <!-- Profile Dropdown -->
+              <div class="relative">
+                  <div id="logined-profile" class="hidden">
+                    <button
+                      class="flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100"
+                      id="profile-menu">
+                      Profile
+                      <svg class="h-4 w-4 text-gray-600"
+                          xmlns="http://www.w3.org/2000/svg" fill="none"
+                          viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round"
+                              stroke-width="2" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                    <div id="profile-dropdown" class="hidden absolute right-0 z-20 mt-2 w-48 rounded-md bg-white shadow-md">
+                        <!-- My Account Option -->
+                        <a href="/my-account"
+                            class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 rounded-md">
+                            My account
+                        </a>
+                        <!-- Log Out Option -->
+                        <!-- <form method="POST" action="#">
+                            <button type="submit" id="logout"
+                                class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 rounded-md">
+                                Log out
+                            </button>
+                        </form> -->
+                        <button type="submit" id="logout"
+                          class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 rounded-md">
+                            Log out
+                        </button>
+                    </div>
+                  </div>
+                  <div id="login-profile">
+                    <a
+                      href="./login.html"
+                      class="flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100"
+                      id="profile-menu">
+                      Login
+                    </a>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </nav>
+
+    <h1 class="text-2xl font-semibold text-red-500 text-center my-5">Checkout</h1>
     <div class="container mx-auto px-20">
-      <div id="order-summary" class="bg-gray-100 shadow-md rounded-md p-5">
+      <div id="order-summary" class=" bg-white shadow-md rounded-md p-5">
         <div>
-          <h2 class="text-xl font-semibold mb-4">Order Summary</h2>
+          <h2 class="text-xl text-center font-semibold mb-4">Order Summary</h2>
           <div id="order-details"></div>
           <div id="order-total"
-            class="text-right text-xl font-semibold mt-5">Total: 0 ฿
+            class="text-right text-twondary text-xl font-semibold mt-5">Total: 0 ฿
           </div>
         </div>
       </div>
@@ -174,9 +277,9 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/tw-elements@latest/dist/js/index.min.js"></script>
-
+    <script src="./js/detail.js"></script>
+    <script src="./js/main.js"></script>
     <script>
-
       // ตรวจสอบความถูกต้องของวันหมดอายุ
       function isValidExpiryDate(date) {
         const [month, year] = date.split("/");
@@ -191,179 +294,140 @@
         );
       }
 
-      document.addEventListener("DOMContentLoaded", () => {
-        const order = JSON.parse(sessionStorage.getItem("currentOrder"));
-        // console.log(order);
-    
-        if (!order) {
+      function loadOrderDetails() {
+        const currentOrder = JSON.parse(sessionStorage.getItem("currentOrder"));
+        const cartOrder = JSON.parse(sessionStorage.getItem("cartOrder"));
+
+        if (!currentOrder && !cartOrder) {
           document.getElementById("order-summary").innerHTML = "<p class='text-center'>No items found.</p>";
           return;
         }
-    
+
         const orderDetails = document.getElementById("order-details");
-        orderDetails.innerHTML = `
-          <div class="flex justify-between items-center mb-4">
-            <div>
-              <h3 class="text-lg font-medium">${order.name}</h3>
-              <p class="text-sm text-gray-500">Price: ${order.price} ฿</p>
-              <p class="text-sm text-gray-500">Quantity: ${order.quantity}</p>
+        let orderHTML = "";
+
+        if (currentOrder) {
+          orderHTML += `
+            <div class="flex justify-between items-center mb-4">
+              <img src="${currentOrder.src}" alt="${currentOrder.name}" class="w-36 h-36 rounded-md mb-4">
+              <div>
+                <h3 class="text-lg font-medium">${currentOrder.name}</h3>
+                <p class="text-sm text-gray-500">Price: ${currentOrder.price} ฿</p>
+                <p class="text-sm text-gray-500">Quantity: ${currentOrder.quantity}</p>
+              </div>
+              <div class="text-right">${currentOrder.total} ฿</div>
             </div>
-            <div class="text-right">${order.total} ฿</div>
-          </div>
-        `;
-    
+          `;
+        }
+
+        if (cartOrder) {
+          cartOrder.forEach(item => {
+            orderHTML += `
+              <div class="flex justify-between items-center mb-4">
+                <img src="${item.src}" alt="${item.name}" class="w-36 h-36 rounded-md mb-4">
+                <div>
+                  <h3 class="text-lg font-medium">${item.name}</h3>
+                  <p class="text-sm text-gray-500">Price: ${item.price} ฿</p>
+                  <p class="text-sm text-gray-500">Quantity: ${item.quantity}</p>
+                </div>
+                <div class="text-right">${item.total} ฿</div>
+              </div>
+            `;
+          });
+        }
+
+        orderDetails.innerHTML = orderHTML;
+
         const orderTotal = document.getElementById("order-total");
-        orderTotal.textContent = `Total: ${order.total} ฿`;
-    
-        // แสดง/ซ่อนฟอร์มบัตรเครดิตตามวิธีการชำระเงิน
-        const paymentForm = document.getElementById("payment-form");
+        const total = (currentOrder ? currentOrder.total : 0) + (cartOrder ? cartOrder.reduce((sum, item) => sum + item.total, 0) : 0);
+        orderTotal.textContent = `Total: ${total} ฿`;
+      }
+
+      function handlePaymentMethodChange(event) {
+        const paymentMethod = event.target.value;
         const creditCardForm = document.getElementById("credit-card-form");
         const promptPayForm = document.getElementById("promtpay-qr");
-    
-        paymentForm.addEventListener("change", (event) => {
-          const paymentMethod = event.target.value;
-    
-          if (paymentMethod === "Credit Card") {
-            creditCardForm.classList.remove("hidden"); // แสดงฟอร์มบัตรเครดิต
-          } else {
-            creditCardForm.classList.add("hidden"); // ซ่อนฟอร์มบัตรเครดิต
-          }
-        });
 
-        // แสดง/ซ่อนฟอร์ม PP ตามวิธีการชำระเงิน
-        paymentForm.addEventListener("change", (event) => {
-          const paymentMethod = event.target.value;
-    
-          if (paymentMethod === "Prompt Pay") {
-            promptPayForm.classList.remove("hidden"); // แสดงฟอร์มบัตรเครดิต
-          } else {
-            promptPayForm.classList.add("hidden"); // ซ่อนฟอร์มบัตรเครดิต
-          }
-        });
+        creditCardForm.classList.toggle("hidden", paymentMethod !== "Credit Card");
+        promptPayForm.classList.toggle("hidden", paymentMethod !== "Prompt Pay");
+      }
 
-        // ยืนยันคำสั่งซื้อ
-        document.getElementById("confirm-order").addEventListener("click", () => {
-          const selectedPaymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
+      function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        const cartCount = cart.reduce((total, item) => total + item.quantity, 0); // รวมจำนวนสินค้า
+        const cartIcon = document.getElementById("cart-count");
+        cartIcon.textContent = cartCount; // อัปเดตตัวเลขบนไอคอน
+      }
       
-          if (selectedPaymentMethod === "Credit Card") {
-            const cardNumber = document.getElementById("card-number").value.trim();
-            const cardName = document.getElementById("card-name").value.trim();
-            const expiryDate = document.getElementById("expiry-date").value.trim();
-            const cvv = document.getElementById("cvv").value.trim();
-    
-            if (!cardNumber || !cardName || !expiryDate || !cvv) {
-              alert("Please fill in your credit card details.");
-              return;
-            }
+      function handleConfirmOrder() {
+        const selectedPaymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
 
-            document.getElementById("card-number").addEventListener("input", (event) => {
-              const input = event.target;
-              const value = input.value.replace(/\s+/g, ""); // ลบช่องว่างทั้งหมด
-              const formattedValue = value.match(/.{1,4}/g)?.join(" ") || ""; // เพิ่มช่องว่างทุก 4 ตัว
-              input.value = formattedValue; // ตั้งค่าข้อความที่ฟอร์แมตแล้ว
+        if (selectedPaymentMethod === "Credit Card") {
+          const cardNumber = document.getElementById("card-number").value.trim();
+          const cardName = document.getElementById("card-name").value.trim();
+          const expiryDate = document.getElementById("expiry-date").value.trim();
+          const cvv = document.getElementById("cvv").value.trim();
 
-              // ตรวจสอบความยาวไม่ให้เกิน 16 ตัวเลข (ไม่รวมช่องว่าง)
-              if (value.length > 16) {
-                input.value = formattedValue.slice(0, 19); // จำกัดความยาวรวมช่องว่าง
-              }
-            });
-
-            if (!isValidExpiryDate(expiryDate)) {
-              alert("Invalid expiry date. Please check and try again.");
-              return;
-            }
-
-            if (cvv.length !== 3 || isNaN(cvv)) {
-              alert("Invalid CVV. Please enter a 3-digit security code.");
-              return;
-            }
+          if (!cardNumber || !cardName || !expiryDate || !cvv) {
+            alert("Please fill in your credit card details.");
+            return;
           }
 
-          console.log(`
-          Order confirmed! 
-          Payment Method:", ${selectedPaymentMethod}
-          `);
-    
-          alert(`
-            Order confirmed!
-            Payment Method: ${selectedPaymentMethod}
-            Thank you for your purchase.
-          `);
-      
-          sessionStorage.removeItem("currentOrder"); // ลบข้อมูลหลังคำสั่งซื้อเสร็จสิ้น
-          window.location.href = "./index.html"; // กลับไปหน้าหลัก
-        });
-      });
+          if (!isValidExpiryDate(expiryDate)) {
+            alert("Invalid expiry date. Please check and try again.");
+            return;
+          }
 
-      // -----------------------form cart-----------------------
-      
-      document.addEventListener("DOMContentLoaded", () => {
-        // ดึงข้อมูลจาก sessionStorage
-        const cartData = sessionStorage.getItem("checkoutCart");
-        console.log("Retrieved data:", cartData);
-
-        if (!cartData) {
-          document.getElementById("order-summary").innerHTML = "<p class='text-center'>No items found.</p>";
-          return;
+          if (cvv.length !== 3 || isNaN(cvv)) {
+            alert("Invalid CVV. Please enter a 3-digit security code.");
+            return;
+          }
         }
 
-        const cart = JSON.parse(cartData);
-        const total = sessionStorage.getItem("checkoutTotal") || 0;
+        // ตรวจสอบว่ามี cartOrder หรือไม่ และอัปเดตสินค้าใน localStorage
+        if (sessionStorage.getItem("cartOrder")) {
+          localStorage.removeItem("cart");  // ล้างตะกร้าสินค้าใน localStorage
+        }
 
+        alert(`Order confirmed! Payment Method: ${selectedPaymentMethod} Thank you for your purchase.`);
+        sessionStorage.removeItem("currentOrder");
+        sessionStorage.removeItem("cartOrder");
+        window.location.href = "./index.html";
+        updateCartCount();
+      }
 
-        const orderDetails  = document.getElementById("order-details");
-        orderDetails.innerHTML = cart.map(item => `
-          <div class="flex justify-between items-center mb-4">
-            <div>
-              <h3 class="text-lg font-medium">${item.name}</h3>
-              <p class="text-sm text-gray-500">Price: ${item.price} ฿</p>
-              <p class="text-sm text-gray-500">Quantity: ${item.quantity}</p>
-            </div>
-            <div class="text-right">${item.price * item.quantity} ฿</div>
-          </div>
-        `).join('');
+      function handleAddressFormSubmit() {
+        const addressData = {
+          firstName: document.getElementById("firstName").value.trim(),
+          lastName: document.getElementById("lastName").value.trim(),
+          address: document.getElementById("address").value.trim(),
+          city: document.getElementById("city").value.trim(),
+          province: document.getElementById("province").value.trim(),
+          zipcode: document.getElementById("zipcode").value.trim(),
+          phoneNumber: document.getElementById("phoneNumber").value.trim(),
+          email: document.getElementById("email").value.trim(),
+        };
 
-        document.getElementById("order-total").textContent = `Total: ${total} ฿`;
-      });
+        for (const key in addressData) {
+          if (!addressData[key]) {
+            alert(`กรุณากรอกข้อมูล: ${key}`);
+            return;
+          }
+        }
+
+        localStorage.setItem("customerAddress", JSON.stringify(addressData));
+        alert("Your order has been successfully!");
+        window.location.href = "./index.html";
+      }
 
       document.addEventListener("DOMContentLoaded", () => {
-        const confirmOrderBtn = document.getElementById("confirm-order");
+        loadOrderDetails();
 
-        confirmOrderBtn.addEventListener("click", () => {
-        // ดึงข้อมูลที่อยู่จากฟอร์ม
-          const addressData = {
-            firstName: document.getElementById("firstName").value.trim(),
-            lastName: document.getElementById("lastName").value.trim(),
-            address: document.getElementById("address").value.trim(),
-            city: document.getElementById("city").value.trim(),
-            province: document.getElementById("province").value.trim(),
-            zipcode: document.getElementById("zipcode").value.trim(),
-            phoneNumber: document.getElementById("phoneNumber").value.trim(),
-            email: document.getElementById("email").value.trim(),
-          };
-
-          // ตรวจสอบข้อมูลที่อยู่ว่ากรอกครบถ้วนหรือไม่
-          for (const key in addressData) {
-            if (!addressData[key]) {
-              alert(`กรุณากรอกข้อมูล: ${key}`);
-              return;
-            }
-          }
-
-          // บันทึกข้อมูลลงใน Local Storage
-          localStorage.setItem("customerAddress", JSON.stringify(addressData));
-
-          // แสดงผลข้อมูลทาง console
-          console.log("บันทึกข้อมูลที่อยู่สำเร็จ:", addressData);
-
-          alert("Your order has been successfully!");
-
-          // ย้ายไปยังหน้าสั่งซื้อเสร็จสมบูรณ์ หรือหน้าขอบคุณ
-          window.location.href = "./index.html";
-        });
+        document.getElementById("payment-form").addEventListener("change", handlePaymentMethodChange);
+        document.getElementById("confirm-order").addEventListener("click", handleConfirmOrder);
+        document.getElementById("confirm-order").addEventListener("click", handleAddressFormSubmit);
       });
-
-  </script>
+    </script>
 
   </body>
 </html>
