@@ -17,10 +17,10 @@
                     <!-- Products Dropdown -->
                     <div class="relative">
                         <button
-                            class="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100"
+                            class="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:bg-black hover:text-white"
                             id="products-menu">
                             สินค้าทั้งหมด
-                            <svg class="h-4 w-4 text-gray-600"
+                            <svg class="h-4 w-4 text-gray-600 hover:text-white"
                                 xmlns="http://www.w3.org/2000/svg" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -30,13 +30,13 @@
                         <div id="products-dropdown"
                             class="hidden absolute left-0 z-20 mt-2 w-48 rounded-md bg-white shadow-md">
                             <a href="./products.html"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">สินค้าทั้งหมด</a>
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-700 hover:text-white rounded-md">สินค้าทั้งหมด</a>
                             <a href="./products.html?type=headphone"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">หูฟัง</a>
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-700 hover:text-white rounded-md">หูฟัง</a>
                             <a href="./products.html?type=computer"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">คอมพิวเตอร์</a>
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-700 hover:text-white rounded-md">คอมพิวเตอร์</a>
                             <a href="./products.html?type=keyboard"
-                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">คีย์บอร์ด</a>
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-700 hover:text-white rounded-md">คีย์บอร์ด</a>
                         </div>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                 <!-- Search Bar -->
                 <div class="flex-1 max-w-lg">
                     <input type="text" id="search-input"
-                        class="w-full rounded-md border border-gray-300 px-4 py-2 text-sm focus:border-primary-light focus:ring focus:ring-primary-light"
+                        class="w-full rounded-md border border-gray-300 px-4 py-2 text-sm focus:border-gray-500 focus:ring focus:ring-gray-500"
                         placeholder="ค้นหาสินค้า...">
                     <div id="search-results" class="absolute bg-white shadow-md rounded-md w-full mt-2 hidden"
                         style="z-index: 1;"
@@ -69,7 +69,7 @@
                     <div class="relative">
                         <div id="logined-profile" class="hidden">
                           <button
-                            class="flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100"
+                            class="flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:bg-black hover:text-white"
                             id="profile-menu">
                             Profile
                             <svg class="h-4 w-4 text-gray-600"
@@ -82,7 +82,7 @@
                           <div id="profile-dropdown" class="hidden absolute right-0 z-20 mt-2 w-48 rounded-md bg-white shadow-md">
                               <!-- My Account Option -->
                               <a href="/my-account"
-                                  class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 rounded-md">
+                                  class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-red-700 hover:text-white rounded-md">
                                   My account
                               </a>
                               <!-- Log Out Option -->
@@ -93,7 +93,7 @@
                                   </button>
                               </form> -->
                               <button type="submit" id="logout"
-                                class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 rounded-md">
+                                class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-red-700 hover:text-white rounded-md">
                                   Log out
                               </button>
                           </div>
@@ -101,7 +101,7 @@
                         <div id="login-profile">
                           <a
                             href="./login.html"
-                            class="flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100"
+                            class="flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:bg-red-700 hover:text-white"
                             id="profile-menu">
                             Login
                           </a>
@@ -113,37 +113,37 @@
     
         <div class="container mx-auto bg-white font-poppins flex flex-wrap my-4">
             <div class="container mx-auto font-poppins">
-                <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-                    <div id="category-image" class="mb-6">
+                <div class="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-24 sm:max-w-lg lg:max-w-7xl lg:px-8">
+                    <div id="category-image" class="mb-6 w-full">
                         <!-- รูปภาพจะแสดงที่นี่ผ่าน JavaScript -->
                     </div>
-                    <div class="flex items-center gap-4 mb-4 justify-end">
+                    <div class="items-center gap-4 mb-4 flex flex-wrap justify-end sm:justify-center md:justify-end">
                         <input 
                             type="number" 
                             id="min-price" 
                             placeholder="ราคาต่ำสุด" 
-                            class="border rounded-md p-2 w-36"
+                            class="border rounded-md p-2 lg:w-36 sm:w-36"
                         />
                         <input 
                             type="number" 
                             id="max-price" 
                             placeholder="ราคาสูงสุด" 
-                            class="border rounded-md p-2 w-36"
+                            class="border rounded-md p-2 lg:w-36 sm:w-36"
                         />
                         <button 
                             id="filter-price-btn" 
-                            class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+                            class="bg-black text-white px-4 py-2 rounded-md hover:bg-gray-200 hover:text-black lg:w-36 sm:w-auto"
                         >
                             ค้นหา
                         </button>
                         <button 
                             id="clear-filter-btn" 
-                            class="bg-gray-400 text-white px-4 py-2 rounded-md hover:bg-gray-500"
+                            class="bg-gray-200 text-black px-4 py-2 rounded-md hover:bg-black hover:text-white lg:w-36 sm:w-auto"
                         >
                             เคลียร์ตัวกรอง
                         </button>
-                    </div>
-                    <div id="product-list" class="grid grid-cols-12 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+                      </div>
+                    <div id="product-list" class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
                         <!-- product from mock api in js -->
                     </div>
                 </div>

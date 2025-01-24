@@ -6,13 +6,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   const maxPriceInput = document.getElementById("max-price");
   const filterBtn = document.getElementById("filter-price-btn");
   const clearFilterBtn = document.getElementById("clear-filter-btn");
+  // อ้างอิง element ที่ใช้แสดงรูปภาพ
+  const categoryImageDiv = document.getElementById("category-image");
 
   // ดึงประเภทสินค้าจาก URL (ถ้ามี)
   const params = new URLSearchParams(window.location.search);
   const selectedType = params.get("type");
-
-  // อ้างอิง element ที่ใช้แสดงรูปภาพ
-  const categoryImageDiv = document.getElementById("category-image");
+  
   // แมปประเภทสินค้ากับรูปภาพที่เกี่ยวข้อง
   const categoryImages = {
     headphone: "/src/assets/headPage-headphone.png",
@@ -21,17 +21,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   };
 
   // ตรวจสอบว่ามีประเภทสินค้าและแสดงภาพที่เหมาะสม
-  if (selectedType && categoryImages[selectedType]) {
-    categoryImageDiv.innerHTML = `
-      <img 
-        src="${categoryImages[selectedType]}" 
-        alt="${selectedType}" 
-        class="w-full rounded-md shadow-lg"
-      />
-    `;
-  } else {
-    categoryImageDiv.innerHTML = ``;
-  }
+  categoryImageDiv.innerHTML = selectedType && categoryImages[selectedType] ?
+    `<img src="${categoryImages[selectedType]}" alt="${selectedType}" class="w-full rounded-md shadow-lg"/>` :
+    "";
 
   try {
     const response = await fetch("./data/mock-products.json");
@@ -39,65 +31,32 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // ฟังก์ชันแสดงสินค้า
     function displayProducts(filteredProducts) {
-      productList.innerHTML = ""; // ล้างรายการก่อนหน้า
-
-      filteredProducts.forEach((product) => {
-        const productDiv = document.createElement("a");
-        productDiv.classList.add("group", "cursor-pointer", "block", "w-full", "max-w-xs", "mx-auto");
-
-        let saleTag = "";
-        let priceClass = "text-gray-900";
-
-        if (product.sale) {
-          saleTag = `<span class="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
-                       ${product.sale}% OFF
-                     </span>`;
-          priceClass = "text-red-500";
-        }
-
-        productDiv.innerHTML = `
-          <div class="relative p-3 rounded-md shadow-md hover:shadow-xl bg-white" onclick="viewProduct(${product.id})">
-            ${saleTag}
+      productList.innerHTML = filteredProducts.map(product => `
+        <a class="group cursor-pointer block w-full max-w-xs mx-auto" onclick="viewProduct(${product.id})">
+          <div class="relative p-3 rounded-md shadow-md hover:shadow-xl bg-white">
+            ${product.sale ? `<span class='absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded'>${product.sale}% OFF</span>` : ""}
             <img src="${product.src}" alt="Product Img" class="aspect-square w-full rounded-lg bg-gray-200 object-cover xl:aspect-[7/8]"/>
             <h3 class="mt-4 text-sm text-gray-700 font-semibold text-left">${product.name}</h3>
-            <p class="my-1 text-lg font-medium ${priceClass} text-left">Price: ${product.price} ฿</p>
+            <p class="my-1 text-lg font-medium ${product.sale ? 'text-red-500' : 'text-gray-900'} text-left">Price: ${product.price} ฿</p>
           </div>
-        `;
-
-        productList.appendChild(productDiv);
-      });
+        </a>
+      `).join("");
     }
 
-    // ฟังก์ชันกรองสินค้าตามประเภทที่เลือก
-    let filteredProducts = selectedType 
-      ? products.filter(product => product.type === selectedType) 
-      : products;
-
+    let filteredProducts = selectedType ? products.filter(product => product.type === selectedType) : products;
     displayProducts(filteredProducts);
 
-    // กรองสินค้าเฉพาะที่ sale เป็น true
-    filterBtn.addEventListener("click", () => {
-      const filteredProducts = products.filter(product => product.sale);
-      displayProducts(filteredProducts);
-    });
-
-    // ฟังก์ชันกรองสินค้าตามช่วงราคา
+    // กรองสินค้าตามช่วงราคา
     filterBtn.addEventListener("click", () => {
       const minPrice = parseInt(minPriceInput.value) || 0;
       const maxPrice = parseInt(maxPriceInput.value) || Infinity;
-
-      const filteredByPrice = filteredProducts.filter(product => 
-        product.price >= minPrice && product.price <= maxPrice
-      );
-
-      displayProducts(filteredByPrice);
+      displayProducts(filteredProducts.filter(product => product.price >= minPrice && product.price <= maxPrice));
     });
 
     // ฟังก์ชันเคลียร์ตัวกรอง
     clearFilterBtn.addEventListener("click", () => {
       minPriceInput.value = "";
       maxPriceInput.value = "";
-
       // โหลดสินค้าตามประเภทใหม่
       displayProducts(filteredProducts);
     });
@@ -108,31 +67,26 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 
-
 // function to open product details
 function viewProduct(productId) {
   // เก็บ productId ลงใน query parameter ของ URL
   window.location.href = `product-detail.html?id=${productId}`;
 }
 
-// JavaScript for handling the dropdown
+// Dropdown menu handling
+const toggleDropdown = (menuButtonId, dropdownId) => {
+  const menuButton = document.getElementById(menuButtonId);
+  const dropdown = document.getElementById(dropdownId);
+
+  menuButton.addEventListener("click", () => dropdown.classList.toggle("hidden"));
+  document.addEventListener("click", event => {
+    if (!menuButton.contains(event.target) && !dropdown.contains(event.target)) {
+      dropdown.classList.add("hidden");
+    }
+  });
+};
+
 document.addEventListener("DOMContentLoaded", () => {
-  const toggleDropdown = (menuButtonId, dropdownId) => {
-    const menuButton = document.getElementById(menuButtonId);
-    const dropdown = document.getElementById(dropdownId);
-
-    menuButton.addEventListener("click", () => {
-      dropdown.classList.toggle("hidden");
-    });
-
-    document.addEventListener("click", (event) => {
-      if ( !menuButton.contains(event.target) && !dropdown.contains(event.target)
-      ) {
-        dropdown.classList.add("hidden");
-      }
-    });
-  };
-
   toggleDropdown("products-menu", "products-dropdown");
   toggleDropdown("profile-menu", "profile-dropdown");
 });
@@ -180,21 +134,21 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // JavaScript for handling the login UI
-document.addEventListener("DOMContentLoaded", () => {
-  const login = document.getElementById("logined-profile");
-  const noLogin = document.getElementById("login-profile");
-  const logout = document.getElementById("logout");
+// document.addEventListener("DOMContentLoaded", () => {
+//   const login = document.getElementById("logined-profile");
+//   const noLogin = document.getElementById("login-profile");
+//   const logout = document.getElementById("logout");
 
-  // noLogin.addEventListener("click", () => {
-  //   noLogin.classList.add("hidden");
-  //   login.classList.remove("hidden");
-  // });
+//   noLogin.addEventListener("click", () => {
+//     noLogin.classList.add("hidden");
+//     login.classList.remove("hidden");
+//   });
 
-  logout.addEventListener("click", () => {
-    login.classList.add("hidden");
-    noLogin.classList.remove("hidden");
-  });
-});
+//   logout.addEventListener("click", () => {
+//     login.classList.add("hidden");
+//     noLogin.classList.remove("hidden");
+//   });
+// });
 
 // check login and get data from local storage
 document.addEventListener("DOMContentLoaded", () => {
@@ -211,6 +165,12 @@ document.addEventListener("DOMContentLoaded", () => {
     login.classList.add("hidden");
     noLogin.classList.remove("hidden");
   }
+
+  logout.addEventListener("click", () => {
+    login.classList.add("hidden");
+    noLogin.classList.remove("hidden");
+    localStorage.setItem("isLoggedIn", "false");
+  });
 })
 
 // search
@@ -219,8 +179,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   const searchResults = document.getElementById("search-results");
 
   let products = [];
-
-  // โหลดข้อมูลจาก mock-products.json
   try {
     const response = await fetch("./data/mock-products.json");
     products = await response.json();
@@ -229,55 +187,48 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
-  // ฟังก์ชันสำหรับแสดงผลลัพธ์การค้นหา
-  function displayResults(filteredProducts) {
-    searchResults.innerHTML = ""; // ล้างผลลัพธ์เก่า
-    if (filteredProducts.length === 0) {
-      searchResults.innerHTML = `<div class="p-4 text-gray-500">ไม่พบสินค้า</div>`;
-    } else {
-      filteredProducts.forEach((product) => {
-        const resultItem = document.createElement("div");
-        resultItem.classList.add("p-4", "border-b", "border-gray-200", "cursor-pointer", "hover:bg-gray-100");
-        resultItem.innerHTML = `
-          <div class="flex items-center">
-            <img src="${product.src}" alt="${product.name}" class="w-10 h-10 rounded-md mr-4"/>
-            <div>
-              <p class="font-medium">${product.name}</p>
-            </div>
-          </div>
-        `;
-        resultItem.addEventListener("click", () => {
-          // ทำสิ่งที่ต้องการเมื่อเลือกสินค้า เช่น เปิดหน้ารายละเอียดสินค้า
-          window.location.href = `product-detail.html?id=${product.id}`;
-        });
-        searchResults.appendChild(resultItem);
-      });
-    }
-    searchResults.classList.remove("hidden"); // แสดงผลลัพธ์
+  function highlightMatch(text, term) {
+    const regex = new RegExp(`(${term})`, 'gi');
+    return text.replace(regex, '<span class="bg-yellow-200">$1</span>');
   }
 
-  // ตรวจจับการพิมพ์ในช่องค้นหา
+  function displayResults(filteredProducts, searchTerm) {
+    searchResults.innerHTML = filteredProducts.length
+      ? filteredProducts.map(product => `
+          <div class="p-4 border-b border-gray-200 cursor-pointer hover:bg-gray-100" onclick="viewProduct(${product.id})">
+            <div class="flex items-center">
+              <img src="${product.src}" alt="${product.name}" class="w-10 h-10 rounded-md mr-4"/>
+              <p class="font-medium">${highlightMatch(product.name, searchTerm)}</p>
+            </div>
+          </div>`).join("")
+      : `<div class="p-4 text-gray-500">ไม่พบสินค้า</div>`;
+    searchResults.classList.remove("hidden");
+  }
+
   searchInput.addEventListener("input", (event) => {
-    const searchTerm = event.target.value.toLowerCase();
+    const searchTerm = event.target.value.toLowerCase().trim();
+    searchResults.classList.toggle("hidden", !searchTerm);
     if (searchTerm) {
-      const filteredProducts = products.filter(
-        (product) =>
-          product.name.toLowerCase().includes(searchTerm) ||
-          product.description.toLowerCase().includes(searchTerm)
+      const filteredProducts = products.filter(product =>
+        product.name.toLowerCase().includes(searchTerm) ||
+        product.description.toLowerCase().includes(searchTerm)
       );
-      displayResults(filteredProducts);
-    } else {
-      searchResults.classList.add("hidden"); // ซ่อนผลลัพธ์เมื่อไม่มีการพิมพ์
+      displayResults(filteredProducts, searchTerm);
     }
   });
 
-  // ซ่อนผลลัพธ์เมื่อคลิกนอกช่องค้นหา
   document.addEventListener("click", (event) => {
     if (!searchInput.contains(event.target) && !searchResults.contains(event.target)) {
       searchResults.classList.add("hidden");
     }
   });
+
+  function viewProduct(productId) {
+    window.location.href = `product-detail.html?id=${productId}`;
+  }
 });
+
+
 
 // ฟังก์ชันสำหรับอัปเดตจำนวนสินค้าในตะกร้า
 function updateCartCount() {

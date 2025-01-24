@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./output.css" rel="stylesheet">
+    <title>Zero Shop</title>
     <link
       href="https://cdn.jsdelivr.net/npm/tw-elements@latest/dist/css/index.min.css"
       rel="stylesheet" />
@@ -15,14 +16,18 @@
           <!-- Logo and Left Navigation -->
           <div class="flex items-center space-x-6">
               <!-- Logo -->
-              <a href="index.html" class="text-2xl font-bold text-gray-800">BrandLogo</a>
+              <a href="index.html" class="text-xl font-bold text-gray-800">Zero
+                <a href="index.html" class="text-2xl font-bold text-gray-800">
+                  <img src="./assets/last-logo.png" alt="logo" class="h-12 w-auto">
+                </a>
+              </a>
               <!-- Products Dropdown -->
               <div class="relative">
                   <button
-                      class="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100"
+                      class="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:bg-black hover:text-white"
                       id="products-menu">
                       สินค้าทั้งหมด
-                      <svg class="h-4 w-4 text-gray-600"
+                      <svg class="h-4 w-4 text-gray-600 hover:text-white"
                           xmlns="http://www.w3.org/2000/svg" fill="none"
                           viewBox="0 0 24 24" stroke="currentColor">
                           <path stroke-linecap="round" stroke-linejoin="round"
@@ -32,13 +37,13 @@
                   <div id="products-dropdown"
                       class="hidden absolute left-0 z-20 mt-2 w-48 rounded-md bg-white shadow-md">
                       <a href="./products.html"
-                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">สินค้าทั้งหมด</a>
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-700 hover:text-white rounded-md">สินค้าทั้งหมด</a>
                       <a href="./products.html?type=headphone"
-                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">หูฟัง</a>
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-700 hover:text-white rounded-md">หูฟัง</a>
                       <a href="./products.html?type=computer"
-                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">คอมพิวเตอร์</a>
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-700 hover:text-white rounded-md">คอมพิวเตอร์</a>
                       <a href="./products.html?type=keyboard"
-                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">คีย์บอร์ด</a>
+                          class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-700 hover:text-white rounded-md">คีย์บอร์ด</a>
                   </div>
               </div>
           </div>
@@ -46,7 +51,7 @@
           <!-- Search Bar -->
           <div class="flex-1 max-w-lg">
               <input type="text" id="search-input"
-                  class="w-full rounded-md border border-gray-300 px-4 py-2 text-sm focus:border-primary-light focus:ring focus:ring-primary-light"
+                  class="w-full rounded-md border border-gray-100 px-4 py-2 text-sm focus:border-red-500 focus:ring focus:ring-red-500"
                   placeholder="ค้นหาสินค้า...">
               <div id="search-results" class="absolute bg-white shadow-md rounded-md w-full mt-2 hidden"
                 style="z-index: 1;"
@@ -80,10 +85,10 @@
               <div class="relative">
                   <div id="logined-profile" class="hidden">
                     <button
-                      class="flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100"
+                      class="flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:bg-black hover:text-white"
                       id="profile-menu">
                       Profile
-                      <svg class="h-4 w-4 text-gray-600"
+                      <svg class="h-4 w-4 text-gray-600 hover:text-white"
                           xmlns="http://www.w3.org/2000/svg" fill="none"
                           viewBox="0 0 24 24" stroke="currentColor">
                           <path stroke-linecap="round" stroke-linejoin="round"
@@ -93,7 +98,7 @@
                     <div id="profile-dropdown" class="hidden absolute right-0 z-20 mt-2 w-48 rounded-md bg-white shadow-md">
                         <!-- My Account Option -->
                         <a href="/my-account"
-                            class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 rounded-md">
+                            class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-red-700 hover:text-white rounded-md ">
                             My account
                         </a>
                         <!-- Log Out Option -->
@@ -104,7 +109,7 @@
                             </button>
                         </form> -->
                         <button type="submit" id="logout"
-                          class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 rounded-md">
+                          class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-red-700 hover:text-white rounded-md">
                             Log out
                         </button>
                     </div>
@@ -112,7 +117,7 @@
                   <div id="login-profile">
                     <a
                       href="./login.html"
-                      class="flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100"
+                      class="flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:bg-red-700 hover:text-white"
                       id="profile-menu">
                       Login
                     </a>
@@ -122,14 +127,13 @@
       </div>
     </nav>
 
-    <div class="container mx-auto bg-white font-poppins flex flex-wrap my-4">
+    <div class="container mx-auto bg-white font-poppins justify-center lg:flex lg:flex-wrap md:block md:w-full my-4 sm:block :sm:w-full">
       <!-- Carousel (left column, 8/12) -->
-      <div class="w-8/12">
+      <div class="w-full lg:w-8/12 md:w-full sm:w-full">
         <!-- Carousel code here -->
         <div class="relative overflow-hidden w-full rounded-xl">
           <!-- Carousel Images -->
-          <div id="carousel"
-            class="flex transition-transform duration-500 ease-in-out">
+          <div id="carousel" class="flex transition-transform duration-500 ease-in-out">
             <img src="./assets/1.png" alt="Image 1" class="w-full h-auto">
             <img src="./assets/2.png" alt="Image 2" class="w-full h-auto">
             <img src="./assets/3.png" alt="Image 3" class="w-full h-auto">
@@ -157,66 +161,53 @@
         </div>
       </div>
       <!-- 4 images (right column, 4/12) -->
-      <div class="w-4/12 flex flex-col justify-center p-3 rounded-xl bg-tertiary">
-        <div class="h-full flex justify-center items-center bg-tertiary" onclick="window.location.href='./products.html?sale=true'">
+      <div class="w-full lg:w-4/12 flex flex-col justify-center p-4 rounded-xl bg-tertiary">
+        <div class="grid lg:grid-cols-1 gap-4">
           <div class="card rounded-lg shadow-md">
-            <img src="./assets/flash-sale.png"
-              alt="Product Image"
-              class="w-100 h-auto object-cover rounded-md">
+            <img src="./assets/flash-sale.png" alt="Flash Sale" class="w-full sm:w-3/4 h-auto object-cover rounded-md">
           </div>
-        </div>
-        <div class="h-full flex justify-center items-center bg-tertiary">
           <div class="card rounded-lg shadow-md">
-            <img src="./assets/code.png"
-              alt="Product Image"
-              class="w-100 h-auto object-cover rounded-md">
+            <img src="./assets/code.png" alt="Code" class="w-full sm:w-3/4 h-auto object-cover rounded-md">
           </div>
-        </div>
-        <div class="h-full flex justify-center items-center bg-tertiary cursor-pointer" onclick="window.location.href='./product-detail.html?id=21'">
-          <div class="card rounded-lg shadow-md">
-            <img src="./assets/new.png"
-              alt="Product Image"
-              class="w-100 h-auto object-cover rounded-md">
+          <div class="card rounded-lg shadow-md cursor-pointer" onclick="window.location.href='./product-detail.html?id=21'">
+            <img src="./assets/new.png" alt="New Product" class="w-full sm:w-3/4 h-auto object-cover rounded-md">
           </div>
-        </div>
-        <div class="h-full flex justify-center items-center bg-tertiary">
           <div class="card rounded-lg shadow-md">
-            <img src="./assets/new-mem.png"
-              alt="Product Image"
-              class="w-100 h-auto object-cover rounded-md">
+            <img src="./assets/new-mem.png" alt="New Member" class="w-full sm:w-3/4 h-auto object-cover rounded-md">
           </div>
         </div>
       </div>
     </div>
 
     <div class="container mx-auto font-poppins mt-12">
-      <h2 class="text-2xl font-semibold">เลือกสินค้าตามหมวดหมู่</h2>
-      <div class="mx-auto max-w-4xl justify-center px-4 py-10 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <div class="justify-center grid grid-cols-12 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-          <div class="rounded-md shadow-md hover:shadow-xl cursor-pointer" onclick="window.location.href='./products.html?type=headphone'">
+      <h2 class="text-2xl font-semibold text-center">เลือกสินค้าตามหมวดหมู่</h2>
+      <div class="mx-auto max-w-6xl justify-center px-4 py-10 sm:px-6 sm:max-w-lg sm:py-24 lg:max-w-7xl lg:px-8">
+        <div class="grid grid-cols-1 justify-center sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-6 gap-y-10">
+          <div class="rounded-md shadow-md hover:shadow-xl cursor-pointer  items-center" onclick="window.location.href='./products.html?type=headphone'">
             <img
               src="https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2019/09/Bose-Headphone-700-5.jpg"
               alt="Product Img"
-              class="aspect-square w-full rounded-lg bg-gray-200 object-cover" />
+              class="aspect-square w-3/4 sm:w-full rounded-lg bg-gray-200 object-cover mx-auto" />
             <h3 class="py-4 text-sm text-gray-700 text-center">Headphone</h3>
           </div>
           <div class="rounded-md shadow-md hover:shadow-xl cursor-pointer" onclick="window.location.href='./products.html?type=computer'">
             <img
               src="https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2024/05/Product/2-in-1-lenovo-yoga-book-9-13imu9-83ff001tta-notebook-front-right-view.jpg"
               alt="Product Img"
-              class="aspect-square w-full rounded-lg bg-gray-200 object-cover" />
+              class="aspect-square w-3/4 sm:w-full rounded-lg bg-gray-200 object-cover mx-auto" />
             <h3 class="py-4 text-sm text-gray-700 text-center">Notebook</h3>
           </div>
           <div class="rounded-md shadow-md hover:shadow-xl cursor-pointer" onclick="window.location.href='./products.html?type=keyboard'">
             <img
               src="https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2024/10/import/angry%20miao/am-rgb-650-white-top-view(1).jpg"
               alt="Product Img"
-              class="aspect-square w-full rounded-lg bg-gray-200 object-cover" />
+              class="aspect-square w-3/4 sm:w-full rounded-lg bg-gray-200 object-cover mx-auto" />
             <h3 class="py-4 text-sm text-gray-700 text-center">Keyboard</h3>
           </div>
         </div>
       </div>
     </div>
+
 
     <!-- Ensure you load JS for the carousel --> 
     <script src="https://cdn.jsdelivr.net/npm/tw-elements@latest/dist/js/index.min.js"></script>

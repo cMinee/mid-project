@@ -65,7 +65,7 @@ function displayProductDetails(product) {
   const productDetail = document.getElementById('product-detail');
   productDetail.innerHTML = `
     <h2 class="text-2xl font-semibold mb-5">${product.name}</h2>
-    <p class="text-xl font-semibold text-orange-500 mb-5">Price: ${product.price} ฿</p>
+    <p class="text-xl font-semibold text-red-700 mb-5">Price: ${product.price} ฿</p>
     ${product.sale ? `<p class="sale-price text-md font-semibold mb-5 bg-red-500 text-white px-2 py-1">Sale: ${product.sale}%</p>` : ''}
     <p class="text-xl mb-5">${product.description}</p>
     <p class="text-md mb-5">Color: ${product.color}</p>

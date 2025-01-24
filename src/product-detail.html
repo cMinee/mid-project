@@ -16,10 +16,10 @@
             <!-- Products Dropdown -->
             <div class="relative">
                 <button
-                    class="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100"
+                    class="inline-flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:bg-black hover:text-white"
                     id="products-menu">
                     สินค้าทั้งหมด
-                    <svg class="h-4 w-4 text-gray-600"
+                    <svg class="h-4 w-4 text-gray-600 hover:text-white"
                         xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -29,13 +29,13 @@
                 <div id="products-dropdown"
                   class="hidden absolute left-0 z-20 mt-2 w-48 rounded-md bg-white shadow-md">
                   <a href="./products.html"
-                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">สินค้าทั้งหมด</a>
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-700 hover:text-white rounded-md">สินค้าทั้งหมด</a>
                   <a href="./products.html?type=headphone"
-                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">หูฟัง</a>
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-700 hover:text-white rounded-md">หูฟัง</a>
                   <a href="./products.html?type=computer"
-                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">คอมพิวเตอร์</a>
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-700 hover:text-white rounded-md">คอมพิวเตอร์</a>
                   <a href="./products.html?type=keyboard"
-                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">คีย์บอร์ด</a>
+                      class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-700 hover:text-white rounded-md">คีย์บอร์ด</a>
                 </div>
             </div>
         </div>
@@ -43,7 +43,7 @@
         <!-- Search Bar -->
         <div class="flex-1 max-w-lg">
             <input type="text" id="search-input"
-                class="w-full rounded-md border border-gray-300 px-4 py-2 text-sm focus:border-primary-light focus:ring focus:ring-primary-light"
+                class="w-full rounded-md border border-gray-300 px-4 py-2 text-sm focus:border-gray-500 focus:ring focus:ring-gray-500"
                 placeholder="ค้นหาสินค้า...">
             <div id="search-results" class="absolute bg-white shadow-md rounded-md w-full mt-2 hidden"
               style="z-index: 1;"
@@ -68,7 +68,7 @@
             <div class="relative">
                 <div id="logined-profile" class="hidden">
                   <button
-                    class="flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100"
+                    class="flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:bg-black hover:text-white"
                     id="profile-menu">
                     Profile
                     <svg class="h-4 w-4 text-gray-600"
@@ -81,18 +81,18 @@
                   <div id="profile-dropdown" class="hidden absolute right-0 z-20 mt-2 w-48 rounded-md bg-white shadow-md">
                       <!-- My Account Option -->
                       <a href="/my-account"
-                          class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 rounded-md">
+                          class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-red-700 hover:text-white rounded-md">
                           My account
                       </a>
                       <!-- Log Out Option -->
                       <!-- <form method="POST" action="#">
                           <button type="submit" id="logout"
-                              class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 rounded-md">
+                              class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-red-700 hover:text-white rounded-md">
                               Log out
                           </button>
                       </form> -->
                       <button type="submit" id="logout"
-                        class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 rounded-md">
+                        class="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-red-700 hover:text-white rounded-md">
                           Log out
                       </button>
                   </div>
@@ -100,7 +100,7 @@
                 <div id="login-profile">
                   <a
                     href="./login.html"
-                    class="flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:bg-gray-100"
+                    class="flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:bg-red-700 hover:text-white"
                     id="profile-menu">
                     Login
                   </a>
@@ -111,7 +111,7 @@
   </nav>
 
   <div class="container mx-auto my-4 font-poppins">
-    <div class="grid grid-cols-4 gap-4 mx-20 my-10">
+    <div class="grid grid-cols-1 lg:grid-cols-4 md:grid-cols-4 gap-4 mx-20 my-10">
       <div class="col-span-2">
         <!-- show product image -->
         <div id="product-image"></div>
@@ -127,14 +127,14 @@
           <div class="flex my-5 gap-5">
             <a
               href="#"
-              class="add-cart-button w-44 text-center rounded-md bg-primary px-6 py-2 text-white transition hover:bg-primary-light flex justify-center items-center"
+              class="add-cart-button w-44 text-center rounded-md bg-neutral-700 px-6 py-2 text-white transition hover:bg-black hover:text-white flex justify-center items-center"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 mr-2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
               </svg>
               Add Cart
             </a>
-            <a class="buy-now-button w-44 text-center rounded-md bg-primary px-6 py-2 text-white transition hover:bg-primary-light">Buy Now</a>
+            <a class="buy-now-button w-44 text-center cursor-pointer rounded-md bg-red-500 px-6 py-2 text-white transition hover:bg-red-700 hover:text-white">Buy Now</a>
           </div>
         </div>
       </div>
