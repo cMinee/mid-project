@@ -1,7 +1,7 @@
 const params = new URLSearchParams(window.location.search);
 const productId = parseInt(params.get('id'), 10);
 
-// ดึงข้อมูลสินค้า
+// get product data and display product details
 async function fetchProductData() {
   try {
     const products = await getProducts();
@@ -19,14 +19,14 @@ async function fetchProductData() {
   }
 }
 
-// ดึงข้อมูลสินค้า mock
+// get products mock
 async function getProducts() {
   const response = await fetch('./data/mock-products.json');
   if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
   return await response.json();
 }
 
-// แสดงรูปสินค้า
+// show product images
 function displayProductImages(product) {
   const productImg = document.getElementById('product-image');
   productImg.innerHTML = `
@@ -60,7 +60,7 @@ function setupThumbnailEvents() {
   });
 }
 
-// แสดงรายละเอียดสินค้า
+// detail product
 function displayProductDetails(product) {
   const productDetail = document.getElementById('product-detail');
   productDetail.innerHTML = `
@@ -72,14 +72,14 @@ function displayProductDetails(product) {
   `;
 }
 
-// แสดงข้อความผิดพลาด
+// error message
 function displayError(message) {
   document.getElementById('product-detail').textContent = message;
 }
 
 fetchProductData();
 
-// ฟังก์ชันสำหรับจัดการตะกร้าสินค้า
+// function to add product to cart
 function addToCart(product, quantity) {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
   const existingProduct = cart.find(item => item.id === product.id);
@@ -92,13 +92,14 @@ function addToCart(product, quantity) {
   updateCartCount();
 }
 
+// uodate cart count
 function updateCartCount() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
   const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
   document.getElementById("cart-count").textContent = cartCount;
 }
 
-// ดึงข้อมูลสินค้าและเพิ่มปุ่ม Add to Cart
+// get product data and setup add to cart button
 async function setupAddToCartButton() {
   try {
     const products = await getProducts();
@@ -122,7 +123,7 @@ async function setupAddToCartButton() {
 
 setupAddToCartButton();
 
-// ฟังก์ชันสำหรับการสั่งซื้อทันที
+// function to buy now
 function buyNow(product, quantity) {
   if (quantity > 0) {
     sessionStorage.setItem("currentOrder", JSON.stringify({ ...product, quantity, total: product.price * quantity }));

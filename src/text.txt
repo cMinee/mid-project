@@ -321,3 +321,58 @@ document.addEventListener("DOMContentLoaded", () => {
   updateCartCount();
 });
 
+// saerch เก่า
+// search
+document.addEventListener("DOMContentLoaded", async () => {
+  const searchInput = document.getElementById("search-input");
+  const searchResults = document.getElementById("search-results");
+
+  let products = [];
+  try {
+    const response = await fetch("./data/mock-products.json");
+    products = await response.json();
+  } catch (error) {
+    console.error("Error loading products:", error);
+    return;
+  }
+
+  function highlightMatch(text, term) {
+    const regex = new RegExp(`(${term})`, 'gi');
+    return text.replace(regex, '<span class="bg-yellow-200">$1</span>');
+  }
+
+  function displayResults(filteredProducts, searchTerm) {
+    searchResults.innerHTML = filteredProducts.length
+      ? filteredProducts.map(product => `
+          <div class="p-4 border-b border-gray-200 cursor-pointer hover:bg-gray-100" onclick="viewProduct(${product.id})">
+            <div class="flex items-center">
+              <img src="${product.src}" alt="${product.name}" class="w-10 h-10 rounded-md mr-4"/>
+              <p class="font-medium">${highlightMatch(product.name, searchTerm)}</p>
+            </div>
+          </div>`).join("")
+      : `<div class="p-4 text-gray-500">ไม่พบสินค้า</div>`;
+    searchResults.classList.remove("hidden");
+  }
+
+  searchInput.addEventListener("input", (event) => {
+    const searchTerm = event.target.value.toLowerCase().trim();
+    searchResults.classList.toggle("hidden", !searchTerm);
+    if (searchTerm) {
+      const filteredProducts = products.filter(product =>
+        product.name.toLowerCase().includes(searchTerm) ||
+        product.description.toLowerCase().includes(searchTerm)
+      );
+      displayResults(filteredProducts, searchTerm);
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!searchInput.contains(event.target) && !searchResults.contains(event.target)) {
+      searchResults.classList.add("hidden");
+    }
+  });
+
+  function viewProduct(productId) {
+    window.location.href = `product-detail.html?id=${productId}`;
+  }
+});
