@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     `<img src="${categoryImages[selectedType]}" alt="${selectedType}" class="w-full rounded-md shadow-lg"/>` : "";
 
   try {
-    const response = await fetch("./data/mock-products.json");
+    const response = await fetch("./data/products.json");
     let products = await response.json();
 
     // function to display products
@@ -162,7 +162,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   let products = [];
 
   try {
-    const response = await fetch("./data/mock-products.json");
+    const response = await fetch("./data/products.json");
     products = await response.json();
   } catch (error) {
     console.error("Error loading products:", error);

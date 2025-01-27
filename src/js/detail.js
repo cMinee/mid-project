@@ -23,7 +23,7 @@ async function fetchProductData() {
 
 // get products data from json file
 async function getProducts() {
-  const response = await fetch('./data/mock-products.json');
+  const response = await fetch('./data/products.json');
   if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
   return await response.json();
 }
