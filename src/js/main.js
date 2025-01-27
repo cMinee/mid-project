@@ -1,4 +1,5 @@
 // show product list
+// when DOM is loaded fetch products and display
 document.addEventListener("DOMContentLoaded", async () => {
   const productList = document.getElementById("product-list");
   const minPriceInput = document.getElementById("min-price");
@@ -17,7 +18,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     computer: "/src/assets/headPage-notebook.png",
     keyboard: "/src/assets/headPage-keyboard.png"
   };
-
   // check if there is a product type and display the appropriate image
   categoryImageDiv.innerHTML = selectedType && categoryImages[selectedType] ?
     `<img src="${categoryImages[selectedType]}" alt="${selectedType}" class="w-full rounded-md shadow-lg"/>` : "";
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// JavaScript for handling the carousel
+// Carousel
 document.addEventListener("DOMContentLoaded", () => {
   const carousel = document.getElementById("carousel");
   const images = carousel.children;
@@ -130,17 +130,18 @@ document.addEventListener("DOMContentLoaded", () => {
   startAutoSlide();
 });
 
-// check login and get data from local storage
+// check login
 document.addEventListener("DOMContentLoaded", () => {
   const login = document.getElementById("logined-profile");
   const noLogin = document.getElementById("login-profile");
   const logout = document.getElementById("logout");
-
   const isLoggedIn = localStorage.getItem("isLoggedIn");
 
+  // if logged in, show profile dropdown, else show login button
   if (isLoggedIn === "true") {
     login.classList.remove("hidden");
     noLogin.classList.add("hidden");
+    // console.log("User is logged in!!!, isLoggedIn =", isLoggedIn);
   } else {
     login.classList.add("hidden");
     noLogin.classList.remove("hidden");
@@ -169,15 +170,22 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   function highlightMatch(text, term) {
+    // use regex to highlight (สนใจตัวพิมพ์เล็ก-ใหญ่)
     const regex = new RegExp(`(${term})`, 'gi');
+    // insert span tag with bg-yellow-200
     return text.replace(regex, '<span class="bg-yellow-200">$1</span>');
   }
 
+  // function to display search results
   function displayResults(filteredProducts, resultContainer, searchTerm) {
+    // clear previous results
     resultContainer.innerHTML = "";
+
+    // if no products found display message ไม่พบสินค้า
     if (filteredProducts.length === 0) {
       resultContainer.innerHTML = `<div class="p-4 text-gray-500">ไม่พบสินค้า</div>`;
     } else {
+      // loop with forEach to display products
       filteredProducts.forEach((product) => {
         const resultItem = document.createElement("div");
         resultItem.classList.add("p-4", "border-b", "border-gray-200", "cursor-pointer", "hover:bg-gray-100");
@@ -189,6 +197,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             </div>
           </div>
         `;
+        // if found product, redirect to product detail page with id
         resultItem.addEventListener("click", () => {
           window.location.href = `product-detail.html?id=${product.id}`;
         });
@@ -198,21 +207,27 @@ document.addEventListener("DOMContentLoaded", async () => {
     resultContainer.classList.remove("hidden");
   }
 
+  // add event listener for typing in search input
   searchInputs.forEach((input, index) => {
     input.addEventListener("input", (event) => {
+      // convert to lowercase, easy to search
       const searchTerm = event.target.value.toLowerCase();
       if (searchTerm) {
+        // filter products by name or description
         const filteredProducts = products.filter(
           (product) =>
             product.name.toLowerCase().includes(searchTerm) ||
             product.description.toLowerCase().includes(searchTerm)
         );
+        // call displayResults function
         displayResults(filteredProducts, searchResultsContainers[index], searchTerm);
       } else {
+        // hide search results if no text in search input
         searchResultsContainers[index].classList.add("hidden");
       }
     });
 
+    // hide search results when click outside of search input
     document.addEventListener("click", (event) => {
       if (!input.contains(event.target) && !searchResultsContainers[index].contains(event.target)) {
         searchResultsContainers[index].classList.add("hidden");
@@ -224,10 +239,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 // function to add product to cart and update cart count
 function updateCartCount() {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
-  const cartCount = cart.reduce((total, item) => total + item.quantity, 0); // รวมจำนวนสินค้า
+  // calculate total quantity of products in cart
+  const cartCount = cart.reduce((total, item) => total + item.quantity, 0); 
   const cartIcon = document.getElementById("cart-count");
   if (cartIcon) {
-    cartIcon.textContent = cartCount; // อัปเดตตัวเลขบนไอคอน
+    // update cart count in icon
+    cartIcon.textContent = cartCount; 
   }
 }
 
@@ -236,7 +253,7 @@ document.addEventListener("DOMContentLoaded", () => {
   updateCartCount();
 });
 
-// Mobile menu toggle
+// (navbar) Mobile menu toggle
 const mobileMenuButton = document.getElementById('mobile-menu-button');
 const mobileMenu = document.getElementById('mobile-menu');
 const closeMenuButton = document.getElementById('close-menu');
