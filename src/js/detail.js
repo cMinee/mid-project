@@ -1,12 +1,14 @@
+// get product id from the URL parameter
 const params = new URLSearchParams(window.location.search);
 const productId = parseInt(params.get('id'), 10);
 
-// get product data and display product details
+// fetch product data and display product details
 async function fetchProductData() {
   try {
     const products = await getProducts();
     const product = products.find(p => p.id === productId);
 
+    // if product found, display product images and details
     if (product) {
       displayProductImages(product);
       displayProductDetails(product);
@@ -19,9 +21,9 @@ async function fetchProductData() {
   }
 }
 
-// get products mock
+// get products data from json file
 async function getProducts() {
-  const response = await fetch('./data/mock-products.json');
+  const response = await fetch('./data/products.json');
   if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
   return await response.json();
 }
@@ -40,6 +42,7 @@ function displayProductImages(product) {
   setupThumbnailEvents();
 }
 
+// generate thumbnail images for product
 function generateThumbnailImages(product) {
   return [product.src, product.src2, product.src3]
     .filter(src => src)
@@ -84,6 +87,7 @@ function addToCart(product, quantity) {
   const cart = JSON.parse(localStorage.getItem("cart")) || [];
   const existingProduct = cart.find(item => item.id === product.id);
   if (existingProduct) {
+    // update quantity
     existingProduct.quantity += quantity;
   } else {
     cart.push({ ...product, quantity });
@@ -139,8 +143,11 @@ async function setupBuyNowButton() {
     const product = products.find(p => p.id === productId);
 
     if (product) {
+      // setup buy now button
       document.querySelector(".buy-now-button").addEventListener("click", () => {
+        // get quantity from input
         const quantity = parseInt(document.getElementById("quantity").value, 10);
+        // call buyNow function with product and quantity
         buyNow(product, quantity);
       });
     }
