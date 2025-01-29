@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const clearFilterBtn = document.getElementById("clear-filter-btn");
   const categoryImageDiv = document.getElementById("category-image");
 
-  // show product list by category
+  // use URLSearchParams to get query parameters from URL
   const params = new URLSearchParams(window.location.search);
   const selectedType = params.get("type");
   
