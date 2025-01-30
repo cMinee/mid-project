@@ -303,20 +303,25 @@
     <script src="./js/detail.js"></script>
     <script src="./js/main.js"></script>
     <script>
-      // ตรวจสอบความถูกต้องของวันหมดอายุ
+      // function check expiry date in MM/YY format
       function isValidExpiryDate(date) {
+        // split month and year
         const [month, year] = date.split("/");
         const now = new Date();
-        const currentYear = parseInt(now.getFullYear().toString().slice(2), 10); // สองหลักท้ายของปีปัจจุบัน
-        const expiry = new Date(`20${year}`, month - 1); // ปีเป็นแบบ 4 หลัก
+        // สองหลักท้ายของปีปัจจุบัน
+        const currentYear = parseInt(now.getFullYear().toString().slice(2), 10); 
+        // ปีเป็นแบบ 4 หลัก
+        const expiry = new Date(`20${year}`, month - 1); 
+        // check expiry date not less than current date
         return (
-          /^\d{2}\/\d{2}$/.test(date) && // ตรวจสอบรูปแบบ MM/YY
+          /^\d{2}\/\d{2}$/.test(date) &&
           month >= 1 &&
           month <= 12 &&
           (year > currentYear || (year === currentYear && expiry >= now))
         );
       }
 
+      // function to load order from sessionStorage
       function loadOrderDetails() {
         const currentOrder = JSON.parse(sessionStorage.getItem("currentOrder"));
         const cartOrder = JSON.parse(sessionStorage.getItem("cartOrder"));
@@ -329,6 +334,7 @@
         const orderDetails = document.getElementById("order-details");
         let orderHTML = "";
 
+        // show current order (click on buy now)
         if (currentOrder) {
           orderHTML += `
             <div class="flex justify-between items-center mb-4">
@@ -342,7 +348,7 @@
             </div>
           `;
         }
-
+        // show cart order (click on add to cart)
         if (cartOrder) {
           cartOrder.forEach(item => {
             orderHTML += `
@@ -360,28 +366,32 @@
         }
 
         orderDetails.innerHTML = orderHTML;
-
+        // calculate total
         const orderTotal = document.getElementById("order-total");
         const total = (currentOrder ? currentOrder.total : 0) + (cartOrder ? cartOrder.reduce((sum, item) => sum + item.total, 0) : 0);
         orderTotal.textContent = `Total: ${total} ฿`;
       }
 
+      // handle payment method change
       function handlePaymentMethodChange(event) {
         const paymentMethod = event.target.value;
         const creditCardForm = document.getElementById("credit-card-form");
         const promptPayForm = document.getElementById("promtpay-qr");
 
+        // show/hide payment method form
         creditCardForm.classList.toggle("hidden", paymentMethod !== "Credit Card");
         promptPayForm.classList.toggle("hidden", paymentMethod !== "Prompt Pay");
       }
 
+      // update cart count
       function updateCartCount() {
         const cart = JSON.parse(localStorage.getItem("cart")) || [];
-        const cartCount = cart.reduce((total, item) => total + item.quantity, 0); // รวมจำนวนสินค้า
+        const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
         const cartIcon = document.getElementById("cart-count");
-        cartIcon.textContent = cartCount; // อัปเดตตัวเลขบนไอคอน
+        cartIcon.textContent = cartCount;
       }
       
+      // handle confirm order
       function handleConfirmOrder() {
         const selectedPaymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
 
@@ -407,9 +417,10 @@
           }
         }
 
-        // ตรวจสอบว่ามี cartOrder หรือไม่ และอัปเดตสินค้าใน localStorage
+        // check if there is cartOrder and update cart in localStorage
         if (sessionStorage.getItem("cartOrder")) {
-          localStorage.removeItem("cart");  // ล้างตะกร้าสินค้าใน localStorage
+          // remove cartOrder
+          localStorage.removeItem("cart");
         }
 
         alert(`Order confirmed! Payment Method: ${selectedPaymentMethod} Thank you for your purchase.`);
@@ -419,6 +430,7 @@
         updateCartCount();
       }
 
+      // handle address form submit
       function handleAddressFormSubmit() {
         const addressData = {
           firstName: document.getElementById("firstName").value.trim(),
