@@ -12,7 +12,7 @@
         <!-- Logo and Left Navigation -->
         <div class="flex items-center space-x-6">
           <!-- Logo -->
-          <a href="index.html" class="text-xl font-bold text-gray-800">Zero</a>
+          <a href="../index.html" class="text-xl font-bold text-gray-800">Zero</a>
           <!-- Mobile Menu Button -->
           <button id="mobile-menu-button" class="block lg:hidden focus:outline-none">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-800" fill="none"
@@ -426,7 +426,7 @@
         alert(`Order confirmed! Payment Method: ${selectedPaymentMethod} Thank you for your purchase.`);
         sessionStorage.removeItem("currentOrder");
         sessionStorage.removeItem("cartOrder");
-        window.location.href = "./index.html";
+        window.location.href = "../index.html";
         updateCartCount();
       }
 
@@ -452,7 +452,7 @@
 
         localStorage.setItem("customerAddress", JSON.stringify(addressData));
         alert("Your order has been successfully!");
-        window.location.href = "./index.html";
+        window.location.href = "../index.html";
       }
 
       document.addEventListener("DOMContentLoaded", () => {

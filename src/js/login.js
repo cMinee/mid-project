@@ -15,7 +15,7 @@ document.getElementById("login-submit").addEventListener("click", (event) => {
     console.log("Logged in as:", email);
 
     // redirect to index.html
-    window.location.href = "index.html";
+    window.location.href = "../index.html";
   } else {
     // show error message if email or password is empty
     alert("Please enter email and password!");

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./output.css" rel="stylesheet">
+    <link href="src/output.css" rel="stylesheet">
     <title>Zero Shop</title> 
   </head>
   <body>
@@ -36,13 +36,13 @@
               </svg>
             </button>
             <div id="products-dropdown" class="hidden absolute left-0 z-20 mt-2 w-48 rounded-md bg-white shadow-md">
-              <a href="./products.html"
+              <a href="src/products.html"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">All Products</a>
-              <a href="./products.html?type=headphone"
+              <a href="src/products.html?type=headphone"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Headphone</a>
-              <a href="./products.html?type=computer"
+              <a href="src/products.html?type=computer"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Computer</a>
-              <a href="./products.html?type=keyboard"
+              <a href="src/products.html?type=keyboard"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md">Keyboard</a>
             </div>
           </div>
@@ -63,7 +63,7 @@
         <!-- Right Navigation -->
         <div class="flex items-center space-x-6">
           <!-- Icons cart -->
-          <a href="./cart.html" class="relative text-gray-800 rounded-md">
+          <a href="src/cart.html" class="relative text-gray-800 rounded-md">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -97,7 +97,7 @@
             <!-- Login -->
             <div id="login-profile">
               <a
-                href="./login.html"
+                href="src/login.html"
                 class="flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-medium text-gray-800 hover:bg-black hover:text-white"
                 id="profile-menu">Login
               </a>
@@ -122,10 +122,10 @@
                 <!-- results -->
               </div>
             </div>
-            <a href="./products.html" class="block text-gray-800 text-lg font-semibold pl-2 py-2 rounded-md hover:bg-gray-100">All Products</a>
-            <a href="./products.html?type=headphone" class="block text-gray-800 text-lg font-medium pl-5 py-2 rounded-md hover:bg-gray-100">Headphone</a>
-            <a href="./products.html?type=computer" class="block text-gray-800 text-lg font-medium pl-5 py-2 rounded-md hover:bg-gray-100">Computer</a>
-            <a href="./products.html?type=keyboard" class="block text-gray-800 text-lg font-medium pl-5 py-2 rounded-md hover:bg-gray-100">Keyboard</a>
+            <a href="src/products.html" class="block text-gray-800 text-lg font-semibold pl-2 py-2 rounded-md hover:bg-gray-100">All Products</a>
+            <a href="src/products.html?type=headphone" class="block text-gray-800 text-lg font-medium pl-5 py-2 rounded-md hover:bg-gray-100">Headphone</a>
+            <a href="src/products.html?type=computer" class="block text-gray-800 text-lg font-medium pl-5 py-2 rounded-md hover:bg-gray-100">Computer</a>
+            <a href="src/products.html?type=keyboard" class="block text-gray-800 text-lg font-medium pl-5 py-2 rounded-md hover:bg-gray-100">Keyboard</a>
           </div>
         </div>
       </div>
@@ -138,10 +138,10 @@
         <div class="relative overflow-hidden w-full rounded-xl">
           <!-- Carousel Images -->
           <div id="carousel" class="flex transition-transform duration-500 ease-in-out">
-            <img src="./assets/1.png" alt="Image 1" class="w-full h-auto">
-            <img src="./assets/2.png" alt="Image 2" class="w-full h-auto">
-            <img src="./assets/3.png" alt="Image 3" class="w-full h-auto"> 
-            <img src="./assets/4.png" alt="Image 4" class="w-full h-auto">
+            <img src="src/assets/1.png" alt="Image 1" class="w-full h-auto">
+            <img src="src/assets/2.png" alt="Image 2" class="w-full h-auto">
+            <img src="src/assets/3.png" alt="Image 3" class="w-full h-auto"> 
+            <img src="src/assets/4.png" alt="Image 4" class="w-full h-auto">
           </div>
           <!-- Controls -->
           <button id="prev"
@@ -168,16 +168,16 @@
       <div class="lg:w-4/12 flex flex-col justify-center p-4 rounded-xl bg-tertiary">
         <div class="gap-4 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-1">
           <div class="card rounded-lg shadow-md">
-            <img src="./assets/flash-sale.png" alt="Flash Sale" class="w-full h-auto object-cover rounded-md">
+            <img src="src/assets/flash-sale.png" alt="Flash Sale" class="w-full h-auto object-cover rounded-md">
           </div>
           <div class="card rounded-lg shadow-md">
-            <img src="./assets/code.png" alt="Code" class="w-full h-auto object-cover rounded-md">
+            <img src="src/assets/code.png" alt="Code" class="w-full h-auto object-cover rounded-md">
           </div>
-          <div class="card rounded-lg shadow-md cursor-pointer" onclick="window.location.href='./product-detail.html?id=21'">
-            <img src="./assets/new.png" alt="New Product" class="w-full h-auto object-cover rounded-md">
+          <div class="card rounded-lg shadow-md cursor-pointer" onclick="window.location.href='src/product-detail.html?id=21'">
+            <img src="src/assets/new.png" alt="New Product" class="w-full h-auto object-cover rounded-md">
           </div>
           <div class="card rounded-lg shadow-md">
-            <img src="./assets/new-mem.png" alt="New Member" class="w-full h-auto object-cover rounded-md">
+            <img src="src/assets/new-mem.png" alt="New Member" class="w-full h-auto object-cover rounded-md">
           </div>
         </div>
       </div>
@@ -187,21 +187,21 @@
       <h2 class="text-2xl font-semibold text-center">Select products by category</h2>
       <div class="mx-auto max-w-6xl justify-center px-4 py-10 sm:px-6 sm:max-w-lg sm:py-24 lg:max-w-7xl lg:px-8">
         <div class="grid grid-cols-1 justify-center sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-x-6 gap-y-10">
-          <div class="rounded-md shadow-md hover:shadow-xl cursor-pointer  items-center" onclick="window.location.href='./products.html?type=headphone'">
+          <div class="rounded-md shadow-md hover:shadow-xl cursor-pointer  items-center" onclick="window.location.href='src/products.html?type=headphone'">
             <img
               src="https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2019/09/Bose-Headphone-700-5.jpg"
               alt="Product Img"
               class="aspect-square w-3/4 sm:w-full rounded-lg bg-gray-200 object-cover mx-auto" />
             <h3 class="py-4 text-xl font-semibold text-gray-700 text-center">Headphone</h3>
           </div>
-          <div class="rounded-md shadow-md hover:shadow-xl cursor-pointer" onclick="window.location.href='./products.html?type=computer'">
+          <div class="rounded-md shadow-md hover:shadow-xl cursor-pointer" onclick="window.location.href='src/products.html?type=computer'">
             <img
               src="https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2024/05/Product/2-in-1-lenovo-yoga-book-9-13imu9-83ff001tta-notebook-front-right-view.jpg"
               alt="Product Img"
               class="aspect-square w-3/4 sm:w-full rounded-lg bg-gray-200 object-cover mx-auto" />
             <h3 class="py-4 text-xl font-semibold text-gray-700 text-center">Notebook</h3>
           </div>
-          <div class="rounded-md shadow-md hover:shadow-xl cursor-pointer" onclick="window.location.href='./products.html?type=keyboard'">
+          <div class="rounded-md shadow-md hover:shadow-xl cursor-pointer" onclick="window.location.href='src/products.html?type=keyboard'">
             <img
               src="https://mercular.s3.ap-southeast-1.amazonaws.com/images/products/2024/10/import/angry%20miao/am-rgb-650-white-top-view(1).jpg"
               alt="Product Img"
@@ -217,7 +217,7 @@
 
     <!-- Ensure you load JS for the carousel --> 
     <script src="https://cdn.jsdelivr.net/npm/tw-elements@latest/dist/js/index.min.js"></script>
-    <script src="./js/detail.js"></script>
-    <script src="./js/main.js"></script>
+    <script src="src/js/detail.js"></script>
+    <script src="src/js/main.js"></script>
   </body>
 </html>
