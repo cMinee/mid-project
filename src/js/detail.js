@@ -131,7 +131,7 @@ setupAddToCartButton();
 function buyNow(product, quantity) {
   if (quantity > 0) {
     sessionStorage.setItem("currentOrder", JSON.stringify({ ...product, quantity, total: product.price * quantity }));
-    window.location.href = "./checkout.html";
+    window.location.href = "./checkOut.html";
   } else {
     alert("Please enter a valid quantity.");
   }
